@@ -5,7 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 #
-# exec_always feh --bg-scale /home/yanagiis/Dropbox/Wallpaper/345431.jpg
+exec_always feh --bg-scale $HOME/.config/i3/calmfox.png
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 config file (v4)
