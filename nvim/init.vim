@@ -59,6 +59,16 @@ Plug 'idanarye/vim-vebugger'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -94,12 +104,15 @@ Plug 'autozimu/LanguageClient-neovim', {
     " \ 'c': ['cquery', '--log-file', '/tmp/cquery.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
     " \ 'cpp': ['cquery', '--log-file', '/tmp/cquery.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
 let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
     \ 'go': ['go-langserver'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'dart': ['dart_language_server'],
+    \ 'reason': ['reason-language-server.exe'],
     \ }
 
 let g:LanguageClient_trace = "verbose"
@@ -158,7 +171,8 @@ Plug 'Quramy/tsuquyomi'
 " dart
 Plug 'dart-lang/dart-vim-plugin', { 'for': [ 'dart' ] }
 
-
+" reason
+Plug 'reasonml-editor/vim-reason-plus'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -648,6 +662,13 @@ let g:syntastic_python_checkers=['python', 'flake8']
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
+
+" ncm2
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
 
 " Syntax highlight
 " Default highlight is better than polyglot
