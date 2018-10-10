@@ -7,7 +7,7 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
-let vimplug_exists=expand('~/./autoload/plug.vim')
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "c,elm,go,html,javascript,python,rust"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
