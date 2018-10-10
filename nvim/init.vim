@@ -43,7 +43,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'majutsushi/tagbar'
 " Plug 'xolox/vim-easytags'
-" Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -55,21 +54,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tommcdo/vim-kangaroo'
 Plug 'stfl/meson.vim'
 Plug 'cloudhead/neovim-fuzzy'
-" Plug 'ludovicchabant/vim-gutentags'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'roxma/nvim-completion-manager'
 Plug 'idanarye/vim-vebugger'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'dzhou121/gonvim-fuzzy'
-  Plug 'equalsraf/neovim-gui-shim'
-else
-  " Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -90,13 +78,6 @@ Plug 'xolox/vim-session'
 if v:version >= 703
   Plug 'Shougo/vimshell.vim'
 endif
-
-if v:version >= 704
-  "" Snippets
-  Plug 'SirVer/ultisnips'
-endif
-
-Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
@@ -135,15 +116,7 @@ autocmd FileType dart setlocal omnifunc=LanguageClient#complete
 " Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 Plug 'Rip-Rip/clang_complete', {'for': ['c', 'cpp']}
-" Plug 'justmao945/vim-clang'
 Plug 'lyuts/vim-rtags', {'for': ['c', 'cpp']}
-Plug 'spinotech/deoplete-rtags'
-
-
-" elm
-"" Elm Bundle
-Plug 'elmcast/elm-vim'
-
 
 " go
 "" Go Lang Bundle
@@ -497,9 +470,6 @@ let g:neoformat_enabled_python = ['yapf']
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_typescript = ['prettier']
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
 " Disable visualbell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
@@ -563,10 +533,6 @@ let g:clang_auto_user_options = "compile_commands.json, .clang_complete, path"
 
 let g:rtagsUseDefaultMappings = 1
 let g:rtagsJumpStackMaxSize = 100
-
-" deoplete
-let g:deoplete#complete_method = 'completefunc'
-let g:deoplete#disable_auto_complete = 1
 
 " elm
 " elm-vim
