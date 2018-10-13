@@ -10,6 +10,8 @@ let mapleader=' '
 " nnoremap <leader><space>w <Plug>(easymotion-bd-w)
 " nnoremap <leader><space>b <Plug>(easymotion-bd-b)
 
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
 nnoremap <leader>> :vertical resize +5<CR>
 nnoremap <leader>< :vertical resize -5<CR>
 

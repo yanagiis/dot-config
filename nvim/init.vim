@@ -519,6 +519,12 @@ vnoremap K :m '<-2<CR>gv=gv
 "" gitgutter
 let g:gitgutter_enabled = 1
 
+"" ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+
+
+
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
