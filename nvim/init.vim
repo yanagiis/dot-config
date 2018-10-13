@@ -106,7 +106,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
-    \ 'go': ['go-langserver'],
+    \ 'go': ['go-langserver', '-gocodecompletion'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
