@@ -116,7 +116,7 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 let g:LanguageClient_trace = "verbose"
-let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingLevel = 'INFO'
 
 autocmd FileType c,cpp setlocal omnifunc=LanguageClient#complete
 autocmd FileType go setlocal omnifunc=LanguageClient#complete
