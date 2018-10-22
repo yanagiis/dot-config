@@ -100,3 +100,4 @@ alias ls='ls --color=auto'
 alias l="ls -al"
 alias vim="nvim"
 alias vi="nvim"
+alias cat="bat"
