@@ -64,15 +64,15 @@ bindkey '^R'  fzy-history-widget
 zstyle :fzy:tmux    enabled      no
 
 zstyle :fzy:history show-scores  no
-zstyle :fzy:history lines        ''
+zstyle :fzy:history lines        10
 zstyle :fzy:history prompt       'history >> '
 
 zstyle :fzy:file    show-scores  no
-zstyle :fzy:file    lines        ''
+zstyle :fzy:file    lines        10
 zstyle :fzy:file    prompt       'file >> '
 
 zstyle :fzy:cd      show-scores  no
-zstyle :fzy:cd      lines        ''
+zstyle :fzy:cd      lines        10
 zstyle :fzy:cd      prompt       'cd >> '
 
 # Better history searching with arrow keys
