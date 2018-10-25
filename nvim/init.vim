@@ -58,6 +58,7 @@ Plug 'cloudhead/neovim-fuzzy'
 Plug 'idanarye/vim-vebugger'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
+Plug 'rhysd/committia.vim'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
