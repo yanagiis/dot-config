@@ -65,10 +65,15 @@ noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
 
 " (L)anguage
-nmap <leader>ld zp:call LanguageClient_textDocument_definition()<cr>
-nmap <leader>li zp:call LanguageClient_textDocument_hover()<cr>
-nmap <leader>ln zp:call LanguageClient_textDocument_rename()<cr>
-nmap <leader>lc zp:call LanguageClient_textDocument_references()<cr>
+nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+nnoremap <leader>li :call LanguageClient_textDocument_hover()<CR>
 nmap <C-t> zP
 
 augroup go

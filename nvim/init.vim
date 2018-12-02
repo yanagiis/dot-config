@@ -54,7 +54,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tommcdo/vim-kangaroo'
 Plug 'stfl/meson.vim'
 Plug 'cloudhead/neovim-fuzzy'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'idanarye/vim-vebugger'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
@@ -64,8 +64,8 @@ Plug 'honza/vim-snippets'
 
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-ultisnips'
 
@@ -176,11 +176,6 @@ Plug 'reasonml-editor/vim-reason-plus'
 
 "*****************************************************************************
 "*****************************************************************************
-
-"" Include user's extra bundle
-if filereadable(expand("~/.rc.local.bundles"))
-  source ~/.rc.local.bundles
-endif
 
 call plug#end()
 
@@ -394,6 +389,40 @@ augroup END
 
 set autoread
 
+" Disable visualbell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>
+
+if has('macunix')
+  " pbcopy for OSX copy/paste
+  vmap <C-x> :!pbcopy<CR>
+  vmap <C-c> :w !pbcopy<CR><CR>
+endif
+
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+"" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+
+"*****************************************************************************
+"" Plugin settings
+"*****************************************************************************
+
 "" fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -418,20 +447,12 @@ let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-p>"
 let g:UltiSnipsEditSplit="vertical"
 
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-
 " ale
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 let g:ale_linters = { 'python': ['pylint', 'yapf'], 'rust': ['rls'] }
 
 " Tagbar
@@ -462,8 +483,7 @@ let g:tagbar_type_go = {
 	\ },
 	\ 'ctagsbin'  : 'gotags',
 	\ 'ctagsargs' : '-sort -silent'
-\ }
-
+    \ }
 
 let g:tagbar_type_rust = {
 \ 'ctagstype' : 'rust',
@@ -484,35 +504,6 @@ let g:neoformat_enabled_python = ['yapf']
 let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_typescript = ['prettier']
 
-" Disable visualbell
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-endif
-
-"" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
-
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
-
-"" Vmap for maintain Visual Mode after shifting > and <
-vmap < <gv
-vmap > >gv
-
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 "" EasyMotion
 " let g:EasyMotion_do_mapping = 0
 
@@ -522,6 +513,23 @@ let g:gitgutter_enabled = 1
 "" ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
+
+" wrap existing omnifunc
+" Note that omnifunc does not run in background and may probably block the
+" editor. If you don't want to be blocked by omnifunc too often, you could
+" add 180ms delay before the omni wrapper:
+"  'on_complete': ['ncm2#on_complete#delay', 180,
+"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+au User Ncm2Plugin call ncm2#register_source({
+        \ 'name' : 'css',
+        \ 'priority': 9,
+        \ 'subscope_enable': 1,
+        \ 'scope': ['css','scss'],
+        \ 'mark': 'css',
+        \ 'word_pattern': '[\w\-]+',
+        \ 'complete_pattern': ':\s*',
+        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+        \ })
 
 
 
@@ -562,12 +570,6 @@ let g:elm_format_autosave = 1
 " vim-polyglot
 let g:polyglot_disabled = ['elm']
 
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:elm_syntastic_show_warnings = 1
-
-
 " go
 " vim-go
 " run :GoBuild or :GoTestCompile based on the go file
@@ -604,21 +606,12 @@ let g:go_highlight_extra_types = 1
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
-" augroup completion_preview_close
-"   autocmd!
-"   if v:version > 703 || v:version == 703 && has('patch598')
-"     autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | endif
-"   endif
-" augroup END
-
 augroup go
-
   au!
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-
 augroup END
 
 " rust
@@ -662,9 +655,6 @@ let g:jedi#smart_auto_mappings = 0
 
 " typescript
 let g:tsuquyomi_completion_detail = 1
-
-" syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
