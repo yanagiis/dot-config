@@ -44,7 +44,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'majutsushi/tagbar'
 " Plug 'xolox/vim-easytags'
 Plug 'w0rp/ale'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ozelentok/denite-gtags'
 Plug 'vim-scripts/gtags.vim'
@@ -58,6 +58,7 @@ Plug 'cloudhead/neovim-fuzzy'
 Plug 'idanarye/vim-vebugger'
 Plug 'junegunn/vim-easy-align'
 Plug 'mileszs/ack.vim'
+Plug 'lambdalisue/suda.vim'
 Plug 'rhysd/committia.vim'
 
 Plug 'SirVer/ultisnips'
@@ -67,8 +68,10 @@ Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 " Plug 'ncm2/ncm2-bufword'
 " Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-ultisnips'
+
+Plug 'Shougo/echodoc.vim'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -102,34 +105,10 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-    " \ 'c': ['cquery', '--log-file', '/tmp/cquery.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
-    " \ 'cpp': ['cquery', '--log-file', '/tmp/cquery.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
-let g:LanguageClient_serverCommands = {
-    \ 'c': ['clangd'],
-    \ 'cpp': ['clangd'],
-    \ 'go': ['go-langserver', '-gocodecompletion'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'dart': ['dart_language_server'],
-    \ 'reason': ['reason-language-server.exe'],
-    \ }
-
-let g:LanguageClient_trace = "verbose"
-let g:LanguageClient_loggingLevel = 'INFO'
-
-autocmd FileType c,cpp setlocal omnifunc=LanguageClient#complete
-autocmd FileType go setlocal omnifunc=LanguageClient#complete
-autocmd FileType python setlocal omnifunc=LanguageClient#complete
-autocmd FileType rust setlocal omnifunc=LanguageClient#complete
-autocmd FileType typescript,javascript setlocal omnifunc=LanguageClient#complete
-autocmd FileType dart setlocal omnifunc=LanguageClient#complete
-
 " c
 " Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
-Plug 'Rip-Rip/clang_complete', {'for': ['c', 'cpp']}
+" Plug 'Rip-Rip/clang_complete', {'for': ['c', 'cpp']}
 Plug 'lyuts/vim-rtags', {'for': ['c', 'cpp']}
 
 " go
@@ -175,8 +154,46 @@ Plug 'dart-lang/dart-vim-plugin', { 'for': [ 'dart' ] }
 " reason
 Plug 'reasonml-editor/vim-reason-plus'
 
+" vue
+Plug 'posva/vim-vue'
+
 "*****************************************************************************
 "*****************************************************************************
+
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
+    \ 'go': ['go-langserver', '-gocodecompletion'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['pyls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'dart': ['dart_language_server'],
+    \ 'reason': ['/home/yanagiis/bin/reason-language-server.exe']
+    \ }
+
+" let g:LanguageClient_loggingFile = "/tmp/lc.log"
+" let g:LanguageClient_loggingLevel = 'INFO'
+" let g:LanguageClient_diagnosticsList = "Location"
+" let g:LanguageClient_diagnosticsList = "Location"
+
+autocmd FileType c,cpp setlocal omnifunc=LanguageClient#complete
+autocmd FileType go setlocal omnifunc=LanguageClient#complete
+autocmd FileType python setlocal omnifunc=LanguageClient#complete
+autocmd FileType rust setlocal omnifunc=LanguageClient#complete
+autocmd FileType typescript,javascript setlocal omnifunc=LanguageClient#complete
+autocmd FileType dart setlocal omnifunc=LanguageClient#complete
+autocmd FileType reason setlocal omnifunc=LanguageClient#complete
+
+" echodoc
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+
+"" Include user's extra bundle
+if filereadable(expand("~/.rc.local.bundles"))
+  source ~/.rc.local.bundles
+endif
 
 call plug#end()
 
@@ -452,9 +469,19 @@ let g:UltiSnipsEditSplit="vertical"
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-let g:ale_linters = { 'python': ['pylint', 'yapf'], 'rust': ['rls'] }
+
+let g:ale_linters = { 'python': ['pylint', 'yapf'], 'rust': ['rls'], 'c': ['clangtidy'], 'cpp': ['clangtidy'] }
+call ale#linter#Define('go', {
+\   'name': 'revive',
+\   'output_stream': 'both',
+\   'executable': 'revive',
+\   'read_buffer': 0,
+\   'command': 'revive %t',
+\   'callback': 'ale#handlers#unix#HandleAsWarning',
+\})
 
 " Tagbar
 let g:tagbar_autofocus = 0
@@ -514,6 +541,16 @@ let g:gitgutter_enabled = 1
 "" ncm2
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
+au User Ncm2Plugin call ncm2#register_source({
+        \ 'name' : 'css',
+        \ 'priority': 9, 
+        \ 'subscope_enable': 1,
+        \ 'scope': ['css','scss'],
+        \ 'mark': 'css',
+        \ 'word_pattern': '[\w\-]+',
+        \ 'complete_pattern': ':\s*',
+        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+        \ })
 
 " wrap existing omnifunc
 " Note that omnifunc does not run in background and may probably block the
@@ -659,13 +696,6 @@ let g:tsuquyomi_completion_detail = 1
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
-
-" ncm2
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
 
 " Syntax highlight
 " Default highlight is better than polyglot

@@ -114,9 +114,9 @@ augroup c
   autocmd!
   au FileType c,cpp nnoremap <leader>ld :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
   au FileType c,cpp nnoremap <leader>lc :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
-  au FileType c,cpp nnoremap <leader>ls :Denite -buffer-name=gtags_completion gtags_completion<cr>
-  au FileType c,cpp nnoremap <leader>lf :Denite gtags_def:
-  au FileType c,cpp nnoremap <F12> :call g:ClangUpdateQuickFix()<cr>
+  " au FileType c,cpp nnoremap <leader>ls :Denite -buffer-name=gtags_completion gtags_completion<cr>
+  " au FileType c,cpp nnoremap <leader>lf :Denite gtags_def:
+  " au FileType c,cpp nnoremap <F12> :call g:ClangUpdateQuickFix()<cr>
 augroup END
 
 " (P)lugin
