@@ -65,15 +65,15 @@ noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
 
 " (L)anguage
-nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <leader>lc :call LanguageClient#textDocument_references()<CR>
-nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-nnoremap <leader>li :call LanguageClient_textDocument_hover()<CR>
+nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
+nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nmap <leader>lc :call LanguageClient#textDocument_references()<CR>
+nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nmap <leader>lm :call LanguageClient_contextMenu()<CR>
+nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
 nmap <C-t> zP
 
 augroup go
