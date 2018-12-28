@@ -105,6 +105,31 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+    " \ 'c': ['cquery', '--log-file', '/tmp/cquery.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
+    " \ 'cpp': ['cquery', '--log-file', '/tmp/cquery.log', '--init={"cacheDirectory":"/tmp/cquery/"}'],
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
+    \ 'go': ['go-langserver', '-gocodecompletion', '-logfile=/tmp/gols.log'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['pyls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'dart': ['dart_language_server'],
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ }
+
+let g:LanguageClient_trace = "verbose"
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_hoverPreview = 'Always'
+
+autocmd FileType c,cpp setlocal omnifunc=LanguageClient#complete
+autocmd FileType go setlocal omnifunc=LanguageClient#complete
+autocmd FileType python setlocal omnifunc=LanguageClient#complete
+autocmd FileType rust setlocal omnifunc=LanguageClient#complete
+autocmd FileType typescript,javascript setlocal omnifunc=LanguageClient#complete
+autocmd FileType dart setlocal omnifunc=LanguageClient#complete
+
 " c
 " Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
