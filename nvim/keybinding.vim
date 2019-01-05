@@ -1,14 +1,7 @@
 " key binding
 
-" ncm2
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-
 " Map leader to space
 let mapleader=' '
-
-" nnoremap <leader><space>f <Plug>(easymotion-bd-f)
-" nnoremap <leader><space>w <Plug>(easymotion-bd-w)
-" nnoremap <leader><space>b <Plug>(easymotion-bd-b)
 
 inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
@@ -42,11 +35,7 @@ nnoremap <leader>fo :Neoformat<CR>
 nnoremap <leader> :hl<CR>
 
 " (S)hell and session
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
+nnoremap <silent> <leader>sh :terminal<CR>
 
 nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
@@ -148,8 +137,3 @@ augroup go
 augroup END
 
 nnoremap ; :
-
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')

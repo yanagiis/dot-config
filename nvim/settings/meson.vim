@@ -1,0 +1,1 @@
+Plug 'stfl/meson.vim'
