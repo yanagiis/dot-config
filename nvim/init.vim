@@ -11,7 +11,7 @@ runtime! settings/vim-plug.vim
 call plug#begin(g:PLUGGED_PATH)
 
 runtime! settings/nerdtree.vim
-runtime! settings/tarbar.vim
+runtime! settings/tagbar.vim
 runtime! settings/vim-commentary.vim
 runtime! settings/vim-airline.vim
 runtime! settings/ale.vim
