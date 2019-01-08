@@ -24,14 +24,11 @@ runtime! settings/ultisnips.vim
 runtime! settings/ncm2.vim
 runtime! settings/color.vim
 runtime! settings/fuzzy.vim
+runtime! settings/ack.vim
 
 runtime! settings/language_client.vim
 
-" {{ git
-runtime! settings/vim-fugitive.vim
-runtime! settings/committia.vim
-runtime! settings/gitv.vim
-" }}
+runtime! settings/git.vim
 
 runtime! settings/go.vim
 runtime! settings/html.vim
