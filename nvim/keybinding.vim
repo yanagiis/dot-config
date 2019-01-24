@@ -13,7 +13,7 @@ nnoremap <leader>a :EasyAlign<CR>
 vnoremap <leader>a :EasyAlign<CR>
 
 " (B)uffer
-nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bb :Denite buffer<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bc :bd<CR>
@@ -26,7 +26,7 @@ nnoremap <leader>cr :source ~/.config/nvim/init.vim<CR>
 " (F)ile
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
-nnoremap <leader>fg :Rgrep<CR>
+nnoremap <leader>fg :Grepper<CR>
 " nnoremap <leader>ff :FZF<CR>
 nnoremap <leader>ff :FuzzyOpen<CR>
 nnoremap <leader>fo :Neoformat<CR>
@@ -68,8 +68,8 @@ nmap <C-t> zP
 augroup go
   autocmd!
   " vim-go
-  " au FileType go nnoremap <Leader>ld <Plug>(go-def-vertical)
-  " au FileType go nnoremap <Leader>lb <Plug>(go-doc-browser)
+  au FileType go nnoremap <Leader>ld <Plug>(go-def-vertical)
+  au FileType go nnoremap <Leader>lb <Plug>(go-doc-browser)
   au FileType go nnoremap K <Plug>(go-doc-vertical)
   au FileType go nnoremap <leader>lr  <Plug>(go-run)
   au FileType go nnoremap <leader>lt  <Plug>(go-test)

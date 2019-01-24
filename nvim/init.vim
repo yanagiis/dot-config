@@ -25,6 +25,7 @@ runtime! settings/ncm2.vim
 runtime! settings/color.vim
 runtime! settings/fuzzy.vim
 runtime! settings/ack.vim
+runtime! settings/vim-grepper.vim
 
 runtime! settings/language_client.vim
 

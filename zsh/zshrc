@@ -13,6 +13,8 @@ source ~/.zplug/init.zsh
 export ENHANCD_COMMAND=ed
 export ENHANCD_FILTER=ENHANCD_FILTER=fzy:fzf:peco
 
+zplug "aperezdc/zsh-fzy"
+
 # Vanilla shell
 zplug "yous/vanilli.sh"
 
@@ -89,4 +91,4 @@ alias ls='ls --color=auto'
 alias l="ls -al"
 alias vim="nvim"
 alias vi="nvim"
-alias cat="bat"
+#alias cat="bat"
