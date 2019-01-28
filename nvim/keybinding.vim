@@ -92,11 +92,6 @@ augroup END
 
 augroup rust
   autocmd!
-  " au FileType rust nnoremap <leader>ld zp<Plug>(rust-def)
-  " au FileType rust nnoremap <C-t> zP
-  " au FileType rust nnoremap gs <Plug>(rust-def-split)
-  " au FileType rust nnoremap gx <Plug>(rust-def-vertical)
-  " au FileType rust nnoremap <leader>K <Plug>(rust-doc)
 augroup END
 
 augroup c
