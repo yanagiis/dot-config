@@ -68,10 +68,11 @@ nmap <C-t> zP
 augroup go
   autocmd!
   " vim-go
-  au FileType go nnoremap <Leader>ld <Plug>(go-def-vertical)
+  let g:go_def_mapping_enabled = 0
+  " au FileType go nnoremap <Leader>ld <Plug>(go-def-vertical)
   au FileType go nnoremap <Leader>lb <Plug>(go-doc-browser)
   au FileType go nnoremap K <Plug>(go-doc-vertical)
-  au FileType go nnoremap <leader>lr  <Plug>(go-run)
+  " au FileType go nnoremap <leader>lr  <Plug>(go-run)
   au FileType go nnoremap <leader>lt  <Plug>(go-test)
   au FileType go nnoremap <Leader>lgt <Plug>(go-coverage-toggle)
   au FileType go nnoremap <silent> <Leader>ll <Plug>(go-metalinter)
