@@ -33,10 +33,12 @@ runtime! settings/language_client.vim
 
 runtime! settings/git.vim
 
+" {{ language
 runtime! settings/go.vim
 runtime! settings/html.vim
 runtime! settings/python.vim
 runtime! settings/meson.vim
+" }}
 
 call plug#end()
 " }
