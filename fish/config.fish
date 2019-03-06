@@ -2,6 +2,7 @@ if not set -q TMUX
   exec tmux
 end
 
+set SPACEFISH_EXIT_CODE_SHOW true
 set SPACEFISH_DOCKER_SHOW false
 set SPACEFISH_RUBY_SHOW false
 set SPACEFISH_CONDA_SHOW false
