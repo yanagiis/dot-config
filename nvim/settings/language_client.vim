@@ -3,10 +3,14 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+let g:LanguageClient_rootMarkers = {
+        \ 'go': ['.git', 'go.mod'],
+        \ }
+
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
-    \ 'go': ['go-langserver', '-gocodecompletion'],
+    \ 'go': ['bingo'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
@@ -14,6 +18,11 @@ let g:LanguageClient_serverCommands = {
     \ 'dart': ['dart_language_server'],
     \ 'reason': ['/home/yanagiis/bin/reason-language-server.exe']
     \ }
+
+augroup golang
+    let g:LanguageClient_diagnosticsEnable = 0
+augroup END
+
 
 autocmd FileType c,cpp setlocal omnifunc=LanguageClient#complete
 autocmd FileType go setlocal omnifunc=LanguageClient#complete

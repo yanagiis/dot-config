@@ -38,6 +38,7 @@ runtime! settings/go.vim
 runtime! settings/html.vim
 runtime! settings/python.vim
 runtime! settings/meson.vim
+runtime! settings/css.vim
 " }}
 
 call plug#end()
