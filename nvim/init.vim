@@ -39,6 +39,7 @@ runtime! settings/html.vim
 runtime! settings/python.vim
 runtime! settings/meson.vim
 runtime! settings/css.vim
+runtime! settings/typescript.vim
 " }}
 
 call plug#end()
