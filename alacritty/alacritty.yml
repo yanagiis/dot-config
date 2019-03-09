@@ -60,21 +60,21 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Ubuntu Mono derivative Powerline # should be "Menlo" or something on macOS.
+    family: Hack
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Regular
 
   # The bold font face
   bold:
-    family: Ubuntu Mono derivative Powerline # should be "Menlo" or something on macOS.
+    family: Hack
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Bold
 
   # The italic font face
   italic:
-    family: Ubuntu Mono derivative Powerline # should be "Menlo" or something on macOS.
+    family: Hack
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
 
   # Point size of the font
   size: 9.0
