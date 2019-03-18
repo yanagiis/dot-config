@@ -20,8 +20,8 @@ runtime! settings/denite.vim
 runtime! settings/neoformat.vim
 runtime! settings/easymotion.vim
 runtime! settings/kangaroo.vim
-runtime! settings/ultisnips.vim
 runtime! settings/ncm2.vim
+runtime! settings/ultisnips.vim
 runtime! settings/color.vim
 runtime! settings/fuzzy.vim
 runtime! settings/ack.vim

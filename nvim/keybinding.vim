@@ -3,8 +3,6 @@
 " Map leader to space
 let mapleader=' '
 
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-
 nnoremap <leader>> :vertical resize +5<CR>
 nnoremap <leader>< :vertical resize -5<CR>
 
@@ -58,7 +56,7 @@ nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
 nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
 nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
 nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nmap <leader>lc :call LanguageClient#textDocument_references()<CR>
+nmap <leader>lc zp:call LanguageClient#textDocument_references()<CR>
 nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
 nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nmap <leader>lm :call LanguageClient_contextMenu()<CR>
@@ -97,8 +95,8 @@ augroup END
 
 augroup c
   autocmd!
-  au FileType c,cpp nnoremap <leader>ld :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
-  au FileType c,cpp nnoremap <leader>lc :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
+  au FileType c,cpp nmap <leader>ld zp:DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
+  au FileType c,cpp nmap <leader>lc zp:DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
   " au FileType c,cpp nnoremap <leader>ls :Denite -buffer-name=gtags_completion gtags_completion<cr>
   " au FileType c,cpp nnoremap <leader>lf :Denite gtags_def:
   " au FileType c,cpp nnoremap <F12> :call g:ClangUpdateQuickFix()<cr>
