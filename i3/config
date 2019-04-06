@@ -173,3 +173,7 @@ bar {
         urgent_workspace #2f343a #900000 #ffffff
     }
 }
+
+for_window [class="^.*"] border pixel 1
+gaps inner 5
+gaps outer 0

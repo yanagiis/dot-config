@@ -2,6 +2,11 @@ theme = "slick"
 icons = "awesome"
 
 [[block]]
+block = "custom"
+interval = 60
+command = "cat /sys/class/power_supply/BAT0/capacity"
+
+[[block]]
 block = "memory"
 display_type = "memory"
 format_mem = "{Mup}%"
@@ -15,4 +20,3 @@ interval = 1
 block = "time"
 interval = 60
 format = "%a %y/%m/%d %R"
-
