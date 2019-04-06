@@ -112,6 +112,10 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
+" (W)orkspace
+nnoremap <leader>ww :ToggleWorkspace<CR>
+
+
 " (S)earch
 nnoremap <leader>* :Ack<cword><CR>
 nnoremap <leader>s :Ack

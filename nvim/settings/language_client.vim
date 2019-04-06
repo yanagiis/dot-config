@@ -3,6 +3,12 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+" Plug 'ncm2/ncm2-ultisnips'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'ncm2/ncm2-neosnippet'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 let g:LanguageClient_rootMarkers = {
         \ 'go': ['.git', 'go.mod'],
         \ }
@@ -23,6 +29,9 @@ augroup golang
     let g:LanguageClient_diagnosticsEnable = 0
 augroup END
 
+inoremap <silent> <expr> <CR> ncm2_neosnippet#expand_or("\<CR>", 'n')
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 autocmd FileType c,cpp setlocal omnifunc=LanguageClient#complete
 autocmd FileType go setlocal omnifunc=LanguageClient#complete

@@ -96,6 +96,16 @@ set scrolloff=3
 
 "" Status bar
 set laststatus=2
+set cmdheight=2
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=cI
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" always show signcolumns
+" set signcolumn=yes
 
 "" Use modeline overrides
 set modeline

@@ -2,6 +2,8 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
+set shell=/bin/zsh
+
 let g:VIMPATH=expand("~/.config/nvim/")
 let g:PLUGGED_PATH=g:VIMPATH . "plugged/"
 
@@ -21,15 +23,15 @@ runtime! settings/neoformat.vim
 runtime! settings/easymotion.vim
 runtime! settings/kangaroo.vim
 runtime! settings/ncm2.vim
-runtime! settings/ultisnips.vim
+" runtime! settings/ultisnips.vim
 runtime! settings/color.vim
 runtime! settings/fuzzy.vim
 runtime! settings/ack.vim
 runtime! settings/vim-grepper.vim
-
 runtime! settings/debug.vim
-
 runtime! settings/language_client.vim
+runtime! settings/vim-signature.vim
+runtime! settings/vim-session.vim
 
 runtime! settings/git.vim
 
