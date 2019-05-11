@@ -40,6 +40,8 @@ zplug "b4b4r07/enhancd", use:init.sh
 # This plugin adds many useful aliases and functions.
 zplug "plugins/git",   from:oh-my-zsh
 
+zplug "aperezdc/zsh-fzy"
+
 # Then, source plugins and add commands to $PATH
 zplug load
 
@@ -91,4 +93,3 @@ alias ls='ls --color=auto'
 alias l="ls -al"
 alias vim="nvim"
 alias vi="nvim"
-#alias cat="bat"

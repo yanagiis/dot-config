@@ -16,7 +16,7 @@ let g:LanguageClient_rootMarkers = {
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
-    \ 'go': ['bingo'],
+    \ 'go': ['gopls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],

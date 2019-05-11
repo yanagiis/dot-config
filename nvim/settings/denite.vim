@@ -15,4 +15,14 @@ function DenitePost()
           \ '<denite:move_to_previous_line>',
           \ 'noremap'
           \)
+
+    " Change denite default options
+    call denite#custom#option('default', {
+        \ 'auto_resize': 1,
+        \ 'prompt': 'λ:',
+        \ 'highlight_mode_insert': 'Visual',
+        \ 'highlight_mode_normal': 'Visual',
+        \ 'highlight_matched_char': 'Function',
+        \ 'highlight_matched_range': 'Normal',
+        \ })
 endfunction

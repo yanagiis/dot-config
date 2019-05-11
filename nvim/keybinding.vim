@@ -11,7 +11,7 @@ nnoremap <leader>a :EasyAlign<CR>
 vnoremap <leader>a :EasyAlign<CR>
 
 " (B)uffer
-nnoremap <leader>bb :Denite buffer<CR>
+nnoremap <leader>bb :PickerBuffer<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bc :bd<CR>
@@ -25,8 +25,8 @@ nnoremap <leader>cr :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>fg :Grepper<CR>
-" nnoremap <leader>ff :FZF<CR>
-nnoremap <leader>ff :FuzzyOpen<CR>
+nnoremap <leader>ff :PickerEdit<CR>
+" nnoremap <leader>ff :Denite file/rec<CR>
 nnoremap <leader>fo :Neoformat<CR>
 
 " (H)ighlight
@@ -93,14 +93,14 @@ augroup rust
   autocmd!
 augroup END
 
-augroup c
-  autocmd!
-  au FileType c,cpp nmap <leader>ld zp:DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
-  au FileType c,cpp nmap <leader>lc zp:DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
-  " au FileType c,cpp nnoremap <leader>ls :Denite -buffer-name=gtags_completion gtags_completion<cr>
-  " au FileType c,cpp nnoremap <leader>lf :Denite gtags_def:
-  " au FileType c,cpp nnoremap <F12> :call g:ClangUpdateQuickFix()<cr>
-augroup END
+" augroup c
+"   autocmd!
+"   au FileType c,cpp nmap <leader>ld zp:DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
+"   au FileType c,cpp nmap <leader>lc zp:DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
+"   au FileType c,cpp nnoremap <leader>ls :Denite -buffer-name=gtags_completion gtags_completion<cr>
+"   au FileType c,cpp nnoremap <leader>lf :Denite gtags_def:
+"   au FileType c,cpp nnoremap <F12> :call g:ClangUpdateQuickFix()<cr>
+" augroup END
 
 " (P)lugin
 nnoremap <leader>pi :PlugInstall<CR>

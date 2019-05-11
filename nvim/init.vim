@@ -32,6 +32,7 @@ runtime! settings/debug.vim
 runtime! settings/language_client.vim
 runtime! settings/vim-signature.vim
 runtime! settings/vim-session.vim
+runtime! settings/fish.vim
 
 runtime! settings/git.vim
 
@@ -42,6 +43,7 @@ runtime! settings/python.vim
 runtime! settings/meson.vim
 runtime! settings/css.vim
 runtime! settings/typescript.vim
+runtime! settings/proto.vim
 " }}
 
 call plug#end()
