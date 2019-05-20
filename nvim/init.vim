@@ -33,6 +33,7 @@ runtime! settings/language_client.vim
 runtime! settings/vim-signature.vim
 runtime! settings/vim-session.vim
 runtime! settings/fish.vim
+runtime! settings/align.vim
 
 runtime! settings/git.vim
 
