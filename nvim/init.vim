@@ -15,15 +15,12 @@ call plug#begin(g:PLUGGED_PATH)
 runtime! settings/nerdtree.vim
 runtime! settings/tagbar.vim
 runtime! settings/vim-commentary.vim
-runtime! settings/vim-airline.vim
-runtime! settings/ale.vim
+runtime! settings/lightline.vim
 runtime! settings/gtags.vim
 runtime! settings/denite.vim
 runtime! settings/neoformat.vim
 runtime! settings/easymotion.vim
 runtime! settings/kangaroo.vim
-runtime! settings/ncm2.vim
-" runtime! settings/ultisnips.vim
 runtime! settings/color.vim
 runtime! settings/fuzzy.vim
 runtime! settings/ack.vim

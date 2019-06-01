@@ -20,13 +20,13 @@ nnoremap <leader>bc :bd<CR>
 nnoremap <leader>cc :edit ~/.config/nvim/init.vim<CR>
 nnoremap <leader>ck :edit ~/.config/nvim/keybinding.vim<CR>
 nnoremap <leader>cr :source ~/.config/nvim/init.vim<CR>
+nnoremap <leader>coc :CocConfig<CR>
 
 " (F)ile
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>fg :Grepper<CR>
 nnoremap <leader>ff :PickerEdit<CR>
-" nnoremap <leader>ff :Denite file/rec<CR>
 nnoremap <leader>fo :Neoformat<CR>
 
 " (H)ighlight
@@ -52,16 +52,22 @@ noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
 
 " (L)anguage
-nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
-nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nmap <leader>lc zp:call LanguageClient#textDocument_references()<CR>
-nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nmap <leader>lm :call LanguageClient_contextMenu()<CR>
-nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
-nmap <C-t> zP
+" nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
+" nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+" nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+" nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+" nmap <leader>lc zp:call LanguageClient#textDocument_references()<CR>
+" nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+" nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+" nmap <leader>lm :call LanguageClient_contextMenu()<CR>
+" nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
+" nmap <C-t> zP
+
+" Remap keys for gotos
+nmap <silent> ld <Plug>(coc-definition)
+nmap <silent> lt <Plug>(coc-type-definition)
+nmap <silent> li <Plug>(coc-implementation)
+nmap <silent> lr <Plug>(coc-references)
 
 augroup go
   autocmd!
@@ -133,5 +139,23 @@ augroup go
     au FileType go nnoremap <F5> :DlvDebug<CR>
     au FileType go nnoremap <F9> :DlvToggleBreakpoint<CR>
 augroup END
+
+
+" { coc.nvim
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+" }
 
 nnoremap ; :

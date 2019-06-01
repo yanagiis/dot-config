@@ -4,7 +4,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename' ] ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
