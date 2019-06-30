@@ -64,10 +64,12 @@ noremap <Leader>gv :Gitv<CR>
 " nmap <C-t> zP
 
 " Remap keys for gotos
-nmap <silent> ld <Plug>(coc-definition)
-nmap <silent> lt <Plug>(coc-type-definition)
-nmap <silent> li <Plug>(coc-implementation)
-nmap <silent> lr <Plug>(coc-references)
+nmap <silent> <leader>ld zp<Plug>(coc-definition)
+nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
+nmap <silent> <leader>li zp<Plug>(coc-implementation)
+nmap <silent> <leader>lc zp<Plug>(coc-references)
+nmap <silent> <leader>lr zp<Plug>(coc-rename)
+nmap <C-t> zP
 
 augroup go
   autocmd!
