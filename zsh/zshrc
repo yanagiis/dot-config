@@ -22,7 +22,7 @@ zplug "yous/vanilli.sh"
 zplug "zsh-users/zsh-completions"
 
 # Load the theme.
-zplug "dracula/zsh", as:theme 
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
 # excuting compinit command and sourcing other plugins.
