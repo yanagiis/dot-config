@@ -26,12 +26,11 @@ runtime! settings/fuzzy.vim
 runtime! settings/ack.vim
 runtime! settings/vim-grepper.vim
 runtime! settings/debug.vim
-runtime! settings/language_client.vim
 runtime! settings/vim-signature.vim
 runtime! settings/vim-session.vim
 runtime! settings/fish.vim
 runtime! settings/align.vim
-runtime! settings/snippets.vim
+runtime! settings/language_client.vim
 
 runtime! settings/git.vim
 

@@ -52,24 +52,24 @@ noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
 
 " (L)anguage
-" nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
-" nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-" nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-" nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-" nmap <leader>lc zp:call LanguageClient#textDocument_references()<CR>
-" nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-" nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-" nmap <leader>lm :call LanguageClient_contextMenu()<CR>
-" nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
-" nmap <C-t> zP
+nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
+nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nmap <leader>lc zp:call LanguageClient#textDocument_references()<CR>
+nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nmap <leader>lm :call LanguageClient_contextMenu()<CR>
+nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
+nmap <C-t> zP
 
 " Remap keys for gotos
-nmap <silent> <leader>ld zp<Plug>(coc-definition)
-nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
-nmap <silent> <leader>li zp<Plug>(coc-implementation)
-nmap <silent> <leader>lc zp<Plug>(coc-references)
-nmap <silent> <leader>lr zp<Plug>(coc-rename)
-nmap <C-t> zP
+" nmap <silent> <leader>ld zp<Plug>(coc-definition)
+" nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
+" nmap <silent> <leader>li zp<Plug>(coc-implementation)
+" nmap <silent> <leader>lc zp<Plug>(coc-references)
+" nmap <silent> <leader>lr zp<Plug>(coc-rename)
+" nmap <C-t> zP
 
 augroup go
   autocmd!
@@ -144,20 +144,20 @@ augroup END
 
 
 " { coc.nvim
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+"                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_next = '<tab>'
 " }
 
 nnoremap ; :
