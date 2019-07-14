@@ -42,6 +42,9 @@ runtime! settings/meson.vim
 runtime! settings/css.vim
 runtime! settings/typescript.vim
 runtime! settings/proto.vim
+runtime! settings/doxygen.vim
+runtime! settings/markdown.vim
+runtime! settings/dart.vim
 " }}
 
 call plug#end()

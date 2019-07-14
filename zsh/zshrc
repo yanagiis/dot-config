@@ -82,7 +82,13 @@ if command -v go &> /dev/null; then
   export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 fi
 
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
+export ARDROID_HOME=$HOME/Android/Sdk/
+
+starvedia_init() {
+	export PATH=/home/yanagiis/Downloads/StarVedia_doc/toolchain/toolchain_gnueabi-4.4.0_ARMv5TE/usr/bin/:$PATH
+	export LD_LIBRARY_PATH=/home/yanagiis/Downloads/StarVedia_doc/toolchain/toolchain_gnueabi-4.4.0_ARMv5TE/usr/lib/:$LD_LIBRARY_PATH
+}
 
 # nodejs
 if command -v yarn &> /dev/null; then

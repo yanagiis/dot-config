@@ -19,8 +19,9 @@ let g:LanguageClient_serverCommands = {
     \ 'go': ['gopls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python': ['pyls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'javascript': ['typescript-language-server', '--stdio'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['~/.node-bin/javascript-typescript-langserver', '--stdio'],
     \ 'dart': ['dart_language_server'],
     \ 'reason': ['/home/yanagiis/bin/reason-language-server.exe']
     \ }
@@ -47,6 +48,7 @@ autocmd FileType go setlocal omnifunc=LanguageClient#complete
 autocmd FileType python setlocal omnifunc=LanguageClient#complete
 autocmd FileType rust setlocal omnifunc=LanguageClient#complete
 autocmd FileType typescript,javascript setlocal omnifunc=LanguageClient#complete
+autocmd FileType typescript.tsx setlocal omnifunc=LanguageClient#complete
 autocmd FileType dart setlocal omnifunc=LanguageClient#complete
 autocmd FileType reason setlocal omnifunc=LanguageClient#complete
 

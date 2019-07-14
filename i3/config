@@ -5,7 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 #
-exec_always feh --bg-scale $HOME/.config/i3/calmfox.png
+exec_always feh --bg-scale $HOME/.config/i3/KALLAX3.png
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 config file (v4)
@@ -33,9 +33,9 @@ font pango:xos4 Terminus Regular 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty 
 #bindsym $mod+Return exec termite
-bindsym $mod+w exec chromium
+bindsym $mod+w exec brave
 
 # kill focused window
 bindsym $mod+c kill
