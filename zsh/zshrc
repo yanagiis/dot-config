@@ -95,7 +95,7 @@ if command -v yarn &> /dev/null; then
   export PATH="$PATH:$HOME/.yarn/bin/"
 fi
 
-alias ls='ls --color=auto'
-alias l="ls -al"
+alias ls='lsd --color=auto'
+alias l="lsd -al"
 alias vim="nvim"
 alias vi="nvim"

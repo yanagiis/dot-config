@@ -5,7 +5,7 @@
 # this file and re-run i3-config-wizard(1).
 #
 #
-exec_always feh --bg-scale $HOME/.config/i3/KALLAX3.png
+exec_always feh --bg-scale $HOME/Downloads/feeling_too_tall.png
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 config file (v4)
@@ -33,8 +33,7 @@ font pango:xos4 Terminus Regular 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty 
-#bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 bindsym $mod+w exec brave
 
 # kill focused window
@@ -162,7 +161,7 @@ new_window pixel 2
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 12
     position top
-    status_command i3status-rs /home/yanagiis/.config/i3/status.toml
+    status_command /home/yanagiis/bin/i3status-rs /home/yanagiis/.config/i3/status.toml
     colors {
         separator #666666
         background #222222
