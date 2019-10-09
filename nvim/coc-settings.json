@@ -1,6 +1,11 @@
 {
     "suggest.enablePreview": true,
     "languageserver": {
+        "rust": {
+            "command": "ra_lsp_server",
+            "filetypes": ["rust"],
+            "rootPatterns": ["Cargo.toml"]
+        },
         "golang": {
             "command": "gopls",
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],

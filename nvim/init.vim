@@ -31,6 +31,7 @@ runtime! settings/vim-session.vim
 runtime! settings/fish.vim
 runtime! settings/align.vim
 runtime! settings/language_client.vim
+runtime! settings/vim-surround.vim
 
 runtime! settings/git.vim
 
@@ -45,6 +46,7 @@ runtime! settings/proto.vim
 runtime! settings/doxygen.vim
 runtime! settings/markdown.vim
 runtime! settings/dart.vim
+runtime! settings/svelte.vim
 " }}
 
 call plug#end()
