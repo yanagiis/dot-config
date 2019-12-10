@@ -18,7 +18,6 @@ runtime! settings/vim-commentary.vim
 runtime! settings/lightline.vim
 runtime! settings/gtags.vim
 runtime! settings/denite.vim
-runtime! settings/neoformat.vim
 runtime! settings/easymotion.vim
 runtime! settings/kangaroo.vim
 runtime! settings/color.vim
@@ -32,6 +31,7 @@ runtime! settings/fish.vim
 runtime! settings/align.vim
 runtime! settings/language_client.vim
 runtime! settings/vim-surround.vim
+runtime! settings/syntax.vim
 
 runtime! settings/git.vim
 

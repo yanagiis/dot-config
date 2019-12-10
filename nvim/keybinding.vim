@@ -27,7 +27,6 @@ nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>fg :Grepper<CR>
 nnoremap <leader>ff :PickerEdit<CR>
-nnoremap <leader>fo :Neoformat<CR>
 
 " (H)ighlight
 nnoremap <leader> :hl<CR>
@@ -69,6 +68,8 @@ nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
 nmap <silent> <leader>li zp<Plug>(coc-implementation)
 nmap <silent> <leader>lc zp<Plug>(coc-references)
 nmap <silent> <leader>lr zp<Plug>(coc-rename)
+nmap <silent> <leader>ll :CocRestart<CR>
+nmap <silent> <leader>lf :call CocAction('format')<CR>
 nmap <C-t> zP
 
 augroup go
