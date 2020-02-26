@@ -1,1 +1,1 @@
-Plug 'tomasr/molokai'
+Plug 'NLKNguyen/papercolor-theme'

@@ -55,7 +55,7 @@ call plug#end()
 source ~/.config/nvim/basic.vim
 source ~/.config/nvim/keybinding.vim
 
-set termguicolors
-colorscheme molokai
+set background=dark
+colorscheme PaperColor
 
 call DenitePost()
