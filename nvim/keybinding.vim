@@ -62,14 +62,23 @@ noremap <Leader>gv :Gitv<CR>
 " nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
 " nmap <C-t> zP
 
-" Remap keys for gotos
-nmap <silent> <leader>ld zp<Plug>(coc-definition)
-nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
-nmap <silent> <leader>li zp<Plug>(coc-implementation)
-nmap <silent> <leader>lc zp<Plug>(coc-references)
-nmap <silent> <leader>lr zp<Plug>(coc-rename)
-nmap <silent> <leader>ll :CocRestart<CR>
-nmap <silent> <leader>lf :call CocAction('format')<CR>
+" nmap <silent> <leader>ld zp<Plug>(coc-definition)
+" nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
+" nmap <silent> <leader>li zp<Plug>(coc-implementation)
+" nmap <silent> <leader>lc zp<Plug>(coc-references)
+" nmap <silent> <leader>lr zp<Plug>(coc-rename)
+" nmap <silent> <leader>ll :CocRestart<CR>
+" nmap <silent> <leader>lf :call CocAction('format')<CR>
+" nmap <C-t> zP
+
+nmap <silent> <leader>ld zp:lua vim.lsp.buf.definition()<CR>
+nmap <silent> <leader>le :lua vim.lsp.util.show_line_diagnostics()<CR>
+nmap <silent> <leader>li zp:lua vim.lsp.buf.implementation()<CR>
+nmap <silent> <leader>lc zp:lua vim.lsp.buf.reference()<CR>
+nmap <silent> <leader>lr :lua vim.lsp.buf.rename()<CR>
+nmap <silent> <leader>ll :lua vim.lsp.buf.server_ready()<CR>
+nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
+nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
 
 augroup go
@@ -78,7 +87,7 @@ augroup go
   let g:go_def_mapping_enabled = 0
   " au FileType go nnoremap <Leader>ld <Plug>(go-def-vertical)
   au FileType go nnoremap <Leader>lb <Plug>(go-doc-browser)
-  au FileType go nnoremap K <Plug>(go-doc-vertical)
+  " au FileType go nnoremap K <Plug>(go-doc-vertical)
   " au FileType go nnoremap <leader>lr  <Plug>(go-run)
   au FileType go nnoremap <leader>lt  <Plug>(go-test)
   au FileType go nnoremap <Leader>lgt <Plug>(go-coverage-toggle)
