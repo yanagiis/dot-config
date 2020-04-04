@@ -25,7 +25,8 @@ nnoremap <leader>coc :CocConfig<CR>
 " (F)ile
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
-nnoremap <leader>fg :Grepper<CR>
+" nnoremap <leader>fg :Grepper<CR>
+nnoremap <leader>fg :Grepper -tool ag<CR>
 nnoremap <leader>ff :PickerEdit<CR>
 
 " (H)ighlight
@@ -81,6 +82,10 @@ nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
 
+augroup svelte
+  au FileType svelte nnoremap <Leader>lf :PrettierAsync<CR>
+augroup END
+
 augroup go
   autocmd!
   " vim-go
@@ -95,30 +100,6 @@ augroup go
   au FileType go nnoremap <C-g> :GoDecls<cr>
   au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
 augroup END
-
-augroup python
-  au FileType python nnoremap <F12> <Plug>(pydocstring)
-augroup END
-  " jedi-vim
-  " let g:jedi#goto_assignments_command = "<leader>lg"
-  " let g:jedi#goto_definitions_command = "<leader>ld"
-  " let g:jedi#documentation_command = "K"
-  " let g:jedi#usages_command = "<leader>ln"
-  " let g:jedi#rename_command = "<leader>lr"
-  " let g:jedi#completions_command = "<C-Space>"
-
-augroup rust
-  autocmd!
-augroup END
-
-" augroup c
-"   autocmd!
-"   au FileType c,cpp nmap <leader>ld zp:DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
-"   au FileType c,cpp nmap <leader>lc zp:DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
-"   au FileType c,cpp nnoremap <leader>ls :Denite -buffer-name=gtags_completion gtags_completion<cr>
-"   au FileType c,cpp nnoremap <leader>lf :Denite gtags_def:
-"   au FileType c,cpp nnoremap <F12> :call g:ClangUpdateQuickFix()<cr>
-" augroup END
 
 " (P)lugin
 nnoremap <leader>pi :PlugInstall<CR>
@@ -151,23 +132,5 @@ augroup go
     au FileType go nnoremap <F5> :DlvDebug<CR>
     au FileType go nnoremap <F9> :DlvToggleBreakpoint<CR>
 augroup END
-
-
-" { coc.nvim
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-"                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-
-" let g:coc_snippet_next = '<tab>'
-" }
 
 nnoremap ; :
