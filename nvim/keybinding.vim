@@ -82,10 +82,6 @@ nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
 
-augroup svelte
-  au FileType svelte nnoremap <Leader>lf :PrettierAsync<CR>
-augroup END
-
 augroup go
   autocmd!
   " vim-go
