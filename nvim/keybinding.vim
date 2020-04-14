@@ -61,8 +61,6 @@ nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
 
-nmap <silent> <leader>nn :NnnPicker<CR>
-
 augroup go
   autocmd!
   " vim-go
@@ -102,7 +100,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 " Function key
 nnoremap <silent> <F1> <ESC>
-nnoremap <silent> <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <F2> :NnnPicker<CR>
 nnoremap <silent> <F3> :TagbarToggle<CR>
 
 augroup go

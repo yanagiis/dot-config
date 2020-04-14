@@ -1,15 +1,15 @@
 lua << EOF
   local nvim_lsp = require'nvim_lsp'
-  local ncm2 = require('ncm2')
+  local completion = require'completion'
 
-  nvim_lsp.bashls.setup{on_init=ncm2.register_lsp_source}
-  nvim_lsp.clangd.setup{on_init=ncm2.register_lsp_source}
-  nvim_lsp.dockerls.setup{on_init=ncm2.register_lsp_source}
-  nvim_lsp.gopls.setup{on_init=ncm2.register_lsp_source}
-  nvim_lsp.rust_analyzer.setup({on_init=ncm2.register_lsp_source})
-  nvim_lsp.vimls.setup{on_init=ncm2.register_lsp_source}
-  nvim_lsp.sveltels.setup{on_init=ncm2.register_lsp_source}
-  nvim_lsp.tsserver.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.bashls.setup{on_attach=completion.on_attach}
+  nvim_lsp.clangd.setup{on_attach=completion.on_attach}
+  nvim_lsp.dockerls.setup{on_attach=completion.on_attach}
+  nvim_lsp.gopls.setup{on_attach=completion.on_attach}
+  nvim_lsp.rust_analyzer.setup({on_attach=completion.on_attach})
+  nvim_lsp.vimls.setup{on_attach=completion.on_attach}
+  nvim_lsp.sveltels.setup{on_attach=completion.on_attach}
+  nvim_lsp.tsserver.setup{on_attach=completion.on_attach}
 
   do
     local method = 'textDocument/publishDiagnostics'
@@ -29,6 +29,12 @@ lua << EOF
   end
 EOF
 
-set omnifunc=v:lua.vim.lsp.omnifunc
 
 autocmd Filetype svelte let g:completion_enable_auto_signature = 0
+autocmd BufEnter * lua require'completion'.on_attach()
+
+set omnifunc=v:lua.vim.lsp.omnifunc
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
+let g:completion_enable_snippet = 'UltiSnips'
