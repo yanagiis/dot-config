@@ -1,13 +1,15 @@
 lua << EOF
   local nvim_lsp = require'nvim_lsp'
-  nvim_lsp.bashls.setup{on_attach=require'completion'.on_attach}
-  nvim_lsp.clangd.setup{on_attach=require'completion'.on_attach}
-  nvim_lsp.dockerls.setup{on_attach=require'completion'.on_attach}
-  nvim_lsp.gopls.setup{on_attach=require'completion'.on_attach}
-  nvim_lsp.rust_analyzer.setup({on_attach=require'completion'.on_attach})
-  nvim_lsp.vimls.setup{on_attach=require'completion'.on_attach}
-  nvim_lsp.sveltels.setup{on_attach=require'completion'.on_attach}
-  nvim_lsp.tsserver.setup{on_attach=require'completion'.on_attach}
+  local ncm2 = require('ncm2')
+
+  nvim_lsp.bashls.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.clangd.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.dockerls.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.gopls.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.rust_analyzer.setup({on_init=ncm2.register_lsp_source})
+  nvim_lsp.vimls.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.sveltels.setup{on_init=ncm2.register_lsp_source}
+  nvim_lsp.tsserver.setup{on_init=ncm2.register_lsp_source}
 
   do
     local method = 'textDocument/publishDiagnostics'

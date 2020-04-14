@@ -11,7 +11,7 @@ nnoremap <leader>a :EasyAlign<CR>
 vnoremap <leader>a :EasyAlign<CR>
 
 " (B)uffer
-nnoremap <leader>bb :PickerBuffer<CR>
+nnoremap <leader>bb :Clap! buffers<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bc :bd<CR>
@@ -25,9 +25,8 @@ nnoremap <leader>coc :CocConfig<CR>
 " (F)ile
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
-" nnoremap <leader>fg :Grepper<CR>
-nnoremap <leader>fg :Grepper -tool ag<CR>
-nnoremap <leader>ff :PickerEdit<CR>
+nnoremap <leader>ff :Clap! files<CR>
+nnoremap <leader>fg :Clap! grep<CR>
 
 " (H)ighlight
 nnoremap <leader> :hl<CR>
@@ -50,27 +49,7 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
-
-" (L)anguage
-" nmap <leader>ld zp:call LanguageClient#textDocument_definition()<CR>
-" nmap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-" nmap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-" nmap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-" nmap <leader>lc zp:call LanguageClient#textDocument_references()<CR>
-" nmap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-" nmap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-" nmap <leader>lm :call LanguageClient_contextMenu()<CR>
-" nmap <leader>li :call LanguageClient_textDocument_hover()<CR>
-" nmap <C-t> zP
-
-" nmap <silent> <leader>ld zp<Plug>(coc-definition)
-" nmap <silent> <leader>lt zp<Plug>(coc-type-definition)
-" nmap <silent> <leader>li zp<Plug>(coc-implementation)
-" nmap <silent> <leader>lc zp<Plug>(coc-references)
-" nmap <silent> <leader>lr zp<Plug>(coc-rename)
-" nmap <silent> <leader>ll :CocRestart<CR>
-" nmap <silent> <leader>lf :call CocAction('format')<CR>
-" nmap <C-t> zP
+noremap <Leader>gf :Clap gfiles<CR>
 
 nmap <silent> <leader>ld zp:lua vim.lsp.buf.definition()<CR>
 nmap <silent> <leader>le :lua vim.lsp.util.show_line_diagnostics()<CR>
@@ -81,6 +60,8 @@ nmap <silent> <leader>ll :lua vim.lsp.buf.server_ready()<CR>
 nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
+
+nmap <silent> <leader>nn :NnnPicker<CR>
 
 augroup go
   autocmd!

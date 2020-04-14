@@ -1,4 +1,4 @@
-Plug 'srstevenson/vim-picker'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
-let g:picker_custom_find_executable = 'rg'
-let g:picker_custom_find_flags = '--color never --files'
+let g:clap_default_external_filter='maple'
+let g:clap_insert_mode_only=v:true

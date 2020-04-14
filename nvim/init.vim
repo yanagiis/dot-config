@@ -12,7 +12,6 @@ runtime! settings/vim-plug.vim
 " { Plugins
 call plug#begin(g:PLUGGED_PATH)
 
-runtime! settings/nerdtree.vim
 runtime! settings/tagbar.vim
 runtime! settings/vim-commentary.vim
 runtime! settings/lightline.vim
@@ -23,16 +22,16 @@ runtime! settings/kangaroo.vim
 runtime! settings/color.vim
 runtime! settings/fuzzy.vim
 runtime! settings/ack.vim
-runtime! settings/vim-grepper.vim
 runtime! settings/debug.vim
 runtime! settings/vim-signature.vim
 runtime! settings/vim-session.vim
 runtime! settings/fish.vim
 runtime! settings/align.vim
-" runtime! settings/ale.vim
 runtime! settings/language_client.vim
 runtime! settings/vim-surround.vim
 runtime! settings/syntax.vim
+runtime! settings/ultisnips.vim
+runtime! settings/filemanager.vim
 
 runtime! settings/git.vim
 
