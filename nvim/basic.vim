@@ -97,6 +97,7 @@ set scrolloff=3
 "" Status bar
 set laststatus=2
 set cmdheight=2
+set noshowmode
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=cI

@@ -26,10 +26,10 @@ zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
 # excuting compinit command and sourcing other plugins.
-zplug "zsh-users/zsh-syntax-highlighting", nice:9
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # ZSH port of Fish shell's history search feature
-zplug "zsh-users/zsh-history-substring-search", nice:10
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
@@ -39,6 +39,9 @@ zplug "b4b4r07/enhancd", use:init.sh
 
 # This plugin adds many useful aliases and functions.
 zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/systemd", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
 
 zplug "aperezdc/zsh-fzy"
 
@@ -99,3 +102,8 @@ alias ls='lsd --color=auto'
 alias l="lsd -al"
 alias vim="nvim"
 alias vi="nvim"
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin

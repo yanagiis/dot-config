@@ -12,7 +12,6 @@ runtime! settings/vim-plug.vim
 " { Plugins
 call plug#begin(g:PLUGGED_PATH)
 
-runtime! settings/tagbar.vim
 runtime! settings/vim-commentary.vim
 runtime! settings/lightline.vim
 runtime! settings/gtags.vim

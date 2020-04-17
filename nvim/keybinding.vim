@@ -26,7 +26,7 @@ nnoremap <leader>coc :CocConfig<CR>
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>ff :Clap! files<CR>
-nnoremap <leader>fg :Clap! grep<CR>
+nnoremap <leader>fg zp:Clap! grep ++query=<cword><CR>
 
 " (H)ighlight
 nnoremap <leader> :hl<CR>
@@ -50,7 +50,9 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
 noremap <Leader>gf :Clap gfiles<CR>
+noremap <Leader>gg :LazyGit<CR>
 
+" (L)anguage
 nmap <silent> <leader>ld zp:lua vim.lsp.buf.definition()<CR>
 nmap <silent> <leader>le :lua vim.lsp.util.show_line_diagnostics()<CR>
 nmap <silent> <leader>li zp:lua vim.lsp.buf.implementation()<CR>
@@ -60,6 +62,9 @@ nmap <silent> <leader>ll :lua vim.lsp.buf.server_ready()<CR>
 nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
+
+" (T)ag
+nmap <silent> <leader>tt :Clap tags<CR>
 
 augroup go
   autocmd!
@@ -100,8 +105,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 " Function key
 nnoremap <silent> <F1> <ESC>
-nnoremap <silent> <F2> :NnnPicker<CR>
-nnoremap <silent> <F3> :TagbarToggle<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
 
 augroup go
     au FileType go nnoremap <F5> :DlvDebug<CR>

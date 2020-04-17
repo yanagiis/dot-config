@@ -30,6 +30,8 @@ lua << EOF
 EOF
 
 
+let g:completion_enable_auto_signature = 1
+
 autocmd Filetype svelte let g:completion_enable_auto_signature = 0
 autocmd BufEnter * lua require'completion'.on_attach()
 
