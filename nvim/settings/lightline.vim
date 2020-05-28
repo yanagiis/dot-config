@@ -4,7 +4,7 @@ let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'method' ] ],
+      \             [ 'readonly', 'filename' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
@@ -12,7 +12,6 @@ let g:lightline = {
       \   'fileformat': 'LightlineFileformat',
       \   'filetype': 'LightlineFiletype',
       \   'filename': 'LightlineFilename',
-      \   'method': 'NearestMethodOrFunction'
       \ }
       \ }
 

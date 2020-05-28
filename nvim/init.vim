@@ -14,8 +14,6 @@ call plug#begin(g:PLUGGED_PATH)
 
 runtime! settings/vim-commentary.vim
 runtime! settings/lightline.vim
-runtime! settings/gtags.vim
-runtime! settings/denite.vim
 runtime! settings/easymotion.vim
 runtime! settings/kangaroo.vim
 runtime! settings/color.vim
@@ -24,7 +22,6 @@ runtime! settings/ack.vim
 runtime! settings/debug.vim
 runtime! settings/vim-signature.vim
 runtime! settings/vim-session.vim
-runtime! settings/fish.vim
 runtime! settings/align.vim
 runtime! settings/language_client.vim
 runtime! settings/vim-surround.vim
@@ -57,5 +54,3 @@ source ~/.config/nvim/keybinding.vim
 
 set background=dark
 colorscheme PaperColor
-
-call DenitePost()

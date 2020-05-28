@@ -1,1 +1,0 @@
-Plug 'uarun/vim-protobuf'
