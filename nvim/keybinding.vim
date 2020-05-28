@@ -27,6 +27,7 @@ nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>ff :Clap! files<CR>
 nmap <leader>fg zp:Clap! grep ++query=<cword><CR>
+nmap <leader>f? zp:Clap! grep<CR>
 
 " (H)ighlight
 nnoremap <leader> :hl<CR>

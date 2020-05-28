@@ -28,8 +28,8 @@ runtime! settings/vim-surround.vim
 runtime! settings/syntax.vim
 runtime! settings/ultisnips.vim
 runtime! settings/filemanager.vim
-
 runtime! settings/git.vim
+runtime! settings/goyo.vim
 
 " {{ language
 runtime! settings/go.vim

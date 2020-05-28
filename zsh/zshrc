@@ -22,7 +22,7 @@ zplug "yous/vanilli.sh"
 zplug "zsh-users/zsh-completions"
 
 # Load the theme.
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
 # excuting compinit command and sourcing other plugins.
@@ -88,11 +88,6 @@ fi
 export PATH=$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
 export ARDROID_HOME=$HOME/Android/Sdk/
 
-starvedia_init() {
-	export PATH=/home/yanagiis/Downloads/StarVedia_doc/toolchain/toolchain_gnueabi-4.4.0_ARMv5TE/usr/bin/:$PATH
-	export LD_LIBRARY_PATH=/home/yanagiis/Downloads/StarVedia_doc/toolchain/toolchain_gnueabi-4.4.0_ARMv5TE/usr/lib/:$LD_LIBRARY_PATH
-}
-
 # nodejs
 if command -v yarn &> /dev/null; then
   export PATH="$PATH:$HOME/.yarn/bin/"
@@ -107,3 +102,5 @@ autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+eval "$(starship init zsh)"
