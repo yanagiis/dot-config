@@ -1,3 +1,3 @@
-Plug 'previm/previm'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-let g:previm_open_cmd = 'brave'
+let g:mkdp_browser = 'firefox'

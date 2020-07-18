@@ -107,6 +107,8 @@ nnoremap <leader>. :lcd %:p:h<CR>
 " Function key
 nnoremap <silent> <F1> <ESC>
 nnoremap <silent> <F2> :NERDTreeToggle<CR>
+nnoremap <silent> <F3> :Vista!!<CR>
+nmap <F12> <Plug>MarkdownPreviewToggle
 
 augroup go
     au FileType go nnoremap <F5> :DlvDebug<CR>

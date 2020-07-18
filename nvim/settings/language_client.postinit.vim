@@ -2,14 +2,21 @@ lua << EOF
   local nvim_lsp = require'nvim_lsp'
   local completion = require'completion'
 
-  nvim_lsp.bashls.setup{on_attach=completion.on_attach}
-  nvim_lsp.clangd.setup{on_attach=completion.on_attach}
-  nvim_lsp.dockerls.setup{on_attach=completion.on_attach}
-  nvim_lsp.gopls.setup{on_attach=completion.on_attach}
-  nvim_lsp.rust_analyzer.setup({on_attach=completion.on_attach})
-  nvim_lsp.vimls.setup{on_attach=completion.on_attach}
-  nvim_lsp.sveltels.setup{on_attach=completion.on_attach}
-  nvim_lsp.tsserver.setup{on_attach=completion.on_attach}
+  local function on_attach()
+    completion.on_attach()
+  end
+
+  nvim_lsp.bashls.setup{on_attach=on_attach}
+  nvim_lsp.clangd.setup{on_attach=on_attach}
+  nvim_lsp.dockerls.setup{on_attach=on_attach}
+  nvim_lsp.gopls.setup{on_attach=on_attach}
+  nvim_lsp.rust_analyzer.setup({on_attach=on_attach})
+  nvim_lsp.vimls.setup{on_attach=on_attach}
+  nvim_lsp.sveltels.setup{on_attach=on_attach}
+  nvim_lsp.tsserver.setup{on_attach=on_attach}
+  nvim_lsp.jsonls.setup{on_attach=on_attch}
+  nvim_lsp.pyls.setup{on_attach=on_attch}
+  nvim_lsp.terraformls.setup{on_attach=on_attch}
 
   do
     local method = 'textDocument/publishDiagnostics'
@@ -31,6 +38,7 @@ EOF
 
 
 let g:completion_enable_auto_signature = 1
+let g:completion_enable_snippet = 'UltiSnips'
 
 autocmd Filetype svelte let g:completion_enable_auto_signature = 0
 autocmd BufEnter * lua require'completion'.on_attach()
@@ -38,5 +46,3 @@ autocmd BufEnter * lua require'completion'.on_attach()
 set omnifunc=v:lua.vim.lsp.omnifunc
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
-
-" let g:completion_enable_snippet = 'UltiSnips'
