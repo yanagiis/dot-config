@@ -1,8 +1,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-[[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
-
 if [[ ! -d ~/.zplug ]];then
   git clone https://github.com/zplug/zplug ~/.zplug
 fi
@@ -20,9 +18,6 @@ zplug "yous/vanilli.sh"
 
 # Additional completion definitions for Zsh
 zplug "zsh-users/zsh-completions"
-
-# Load the theme.
-# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
 # excuting compinit command and sourcing other plugins.
@@ -85,7 +80,7 @@ if command -v go &> /dev/null; then
   export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 fi
 
-export PATH=$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
 export ARDROID_HOME=$HOME/Android/Sdk/
 
 # nodejs
@@ -104,3 +99,5 @@ compinit
 kitty + complete setup zsh | source /dev/stdin
 
 eval "$(starship init zsh)"
+eval "$(pyenv init -)"
+poetry completions zsh > ~/.zfunc/_poetry

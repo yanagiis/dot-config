@@ -6,7 +6,7 @@
 #
 #
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh dark
-exec_always feh --bg-scale $HOME/.config/i3/galaxy.jpg
+exec_always feh --bg-scale $HOME/.config/i3/kristopher-roller-zepnJQycr4U-unsplash.jpg
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 config file (v4)
@@ -37,7 +37,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec kitty sh -c tmux
 bindsym $mod+Shift+Return exec kitty
-bindsym $mod+w exec brave
+bindsym $mod+w exec chromium
 
 # kill focused window
 bindsym $mod+c kill
