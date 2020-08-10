@@ -1,6 +1,10 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+[[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
+
+eval "$(starship init zsh)"
+
 if [[ ! -d ~/.zplug ]];then
   git clone https://github.com/zplug/zplug ~/.zplug
 fi
@@ -80,13 +84,16 @@ if command -v go &> /dev/null; then
   export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 fi
 
-export PATH=$HOME/.local/bin:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.poetry/bin:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
 export ARDROID_HOME=$HOME/Android/Sdk/
 
 # nodejs
 if command -v yarn &> /dev/null; then
   export PATH="$PATH:$HOME/.yarn/bin/"
 fi
+
+# python
+eval "$(pyenv init -)"
 
 alias ls='lsd --color=auto'
 alias l="lsd -al"
@@ -98,6 +105,5 @@ compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
 
-eval "$(starship init zsh)"
 eval "$(pyenv init -)"
 poetry completions zsh > ~/.zfunc/_poetry

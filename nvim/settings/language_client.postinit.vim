@@ -1,9 +1,11 @@
 lua << EOF
   local nvim_lsp = require'nvim_lsp'
   local completion = require'completion'
+  local diagnostic = require'diagnostic'
 
   local function on_attach()
     completion.on_attach()
+    -- diagnostic.on_attach()
   end
 
   nvim_lsp.bashls.setup{on_attach=on_attach}
