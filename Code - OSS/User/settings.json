@@ -1,0 +1,64 @@
+{
+    "breadcrumbs.enabled": true,
+    "explorer.confirmDelete": false,
+    "vim.easymotion": true,
+    "vim.easymotionMarkerForegroundColorOneChar": "red",
+    "vim.easymotionMarkerForegroundColorTwoChar": "orange",
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "window.zoomLevel": 1,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "o"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "?"
+            ],
+            "commands": [
+                "workbench.view.search",
+            ]
+        },
+    ],
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    }
+}
