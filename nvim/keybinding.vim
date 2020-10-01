@@ -25,9 +25,9 @@ nnoremap <leader>coc :CocConfig<CR>
 " (F)ile
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
-nnoremap <leader>ff :Clap! files<CR>
-nmap <leader>fg zp:Clap! grep ++query=<cword><CR>
-nmap <leader>f? zp:Clap! grep<CR>
+nnoremap <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
+nmap <leader>fg :lua require'telescope.builtin'.live_grep{default_text = vim.fn.expand("<cword>") }<CR>
+nmap <leader>f? :lua require'telescope.builtin'.live_grep{}<CR>
 
 " (H)ighlight
 nnoremap <leader> :hl<CR>

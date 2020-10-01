@@ -9,16 +9,17 @@ lua << EOF
   end
 
   nvim_lsp.bashls.setup{on_attach=on_attach}
-  nvim_lsp.clangd.setup{on_attach=on_attach}
+  -- nvim_lsp.clangd.setup{on_attach=on_attach}
+  nvim_lsp.ccls.setup{on_attach_on_attach}
   nvim_lsp.dockerls.setup{on_attach=on_attach}
   nvim_lsp.gopls.setup{on_attach=on_attach}
   nvim_lsp.rust_analyzer.setup({on_attach=on_attach})
   nvim_lsp.vimls.setup{on_attach=on_attach}
   nvim_lsp.sveltels.setup{on_attach=on_attach}
   nvim_lsp.tsserver.setup{on_attach=on_attach}
-  nvim_lsp.jsonls.setup{on_attach=on_attch}
-  nvim_lsp.pyls.setup{on_attach=on_attch}
-  nvim_lsp.terraformls.setup{on_attach=on_attch}
+  nvim_lsp.jsonls.setup{on_attach=on_attach}
+  nvim_lsp.pyls.setup{on_attach=on_attach}
+  nvim_lsp.terraformls.setup{on_attach=on_attach}
 
   do
     local method = 'textDocument/publishDiagnostics'

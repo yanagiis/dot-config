@@ -5,8 +5,9 @@
 # this file and re-run i3-config-wizard(1).
 #
 #
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh dark
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh dark
 exec_always feh --bg-scale $HOME/.config/i3/kristopher-roller-zepnJQycr4U-unsplash.jpg
+exec_always xrdb -merge ~/.Xresources
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # i3 config file (v4)
@@ -99,37 +100,35 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
+
+bindsym $mod+n exec killall -SIGUSR1 waybar
 
 # switch to workspace
-bindsym $mod+1 workspace 1-code
-bindsym $mod+2 workspace 2-code
-bindsym $mod+3 workspace 3-code
-bindsym $mod+4 workspace 4-code
-bindsym $mod+5 workspace 5-code
-bindsym $mod+6 workspace 6-web
-bindsym $mod+7 workspace 7-web
-bindsym $mod+8 workspace 8-web
-bindsym $mod+9 workspace 9-web
-bindsym $mod+0 workspace 0-others
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1-code
-bindsym $mod+Shift+2 move container to workspace 2-code
-bindsym $mod+Shift+3 move container to workspace 3-code
-bindsym $mod+Shift+4 move container to workspace 4-code
-bindsym $mod+Shift+5 move container to workspace 5-code
-bindsym $mod+Shift+6 move container to workspace 6-web
-bindsym $mod+Shift+7 move container to workspace 7-web
-bindsym $mod+Shift+8 move container to workspace 8-web
-bindsym $mod+Shift+9 move container to workspace 9-web
-bindsym $mod+Shift+0 move container to workspace 0-others
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 0
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Ctrl+r restart
-# exit i3 (logs you out of your X session)
+bindsym $mod+Ctrl+r reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -156,31 +155,14 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-new_window pixel 2
-# for_window [class="^.*"] border pixel 2
-# gaps inner 4
-# gaps outer 6
+output "*" background $HOME/.config/i3/kristopher-roller-zepnJQycr4U-unsplash.jpg fill
 
-for_window [class="^.*"] border pixel 2
+bar {
+    swaybar_command waybar
+}
+
+default_border pixel 2
+
+for_window [class="^.*"] border pixel 4
 gaps inner 5
 gaps outer 0
-
-# Colors set from ~/.Xresources
-set_from_resource	$background	background
-set_from_resource	$foreground	foreground
-set_from_resource	$color0		color0
-set_from_resource 	$color1 	color1
-set_from_resource 	$color2 	color2
-set_from_resource 	$color3 	color3
-set_from_resource 	$color4 	color4
-set_from_resource 	$color5 	color5
-set_from_resource 	$color6		color6
-set_from_resource	$color7		color7
-set_from_resource	$color8		color8
-set_from_resource	$color9		color9
-set_from_resource	$color10	color10
-set_from_resource	$color11	color11
-set_from_resource	$color12	color12
-set_from_resource	$color13	color13
-set_from_resource	$color14	color14
-set_from_resource	$color15	color15
