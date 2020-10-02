@@ -11,7 +11,7 @@ nnoremap <leader>a :EasyAlign<CR>
 vnoremap <leader>a :EasyAlign<CR>
 
 " (B)uffer
-nnoremap <leader>bb :Clap! buffers<CR>
+nnoremap <leader>bb :lua require'telescope.builtin'.buffers{}<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bc :bd<CR>
