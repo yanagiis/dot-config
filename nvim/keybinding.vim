@@ -61,6 +61,9 @@ nmap <silent> <leader>lc zp:lua vim.lsp.buf.reference()<CR>
 nmap <silent> <leader>lr :lua vim.lsp.buf.rename()<CR>
 nmap <silent> <leader>ll :lua vim.lsp.buf.server_ready()<CR>
 nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
+nmap <silent> <leader>lp :lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>
+nmap <silent> <leader>ln :lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>
+nmap <silent> <leader>lo :lua vim.lsp.diagnostic.set_loclist()<CR>
 nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
 
