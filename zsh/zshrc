@@ -1,51 +1,41 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-[[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
-
 eval "$(starship init zsh)"
 
-if [[ ! -d ~/.zplug ]];then
-  git clone https://github.com/zplug/zplug ~/.zplug
+autoload -U select-word-style
+select-word-style bash
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-source ~/.zplug/init.zsh
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# enhancd config
-export ENHANCD_COMMAND=ed
-export ENHANCD_FILTER=ENHANCD_FILTER=fzy:fzf:peco
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node \
+    zsh-users/zsh-autosuggestions \
+    zdharma/fast-syntax-highlighting \
+    zdharma/history-search-multi-word \
+    aperezdc/zsh-fzy \
+    zsh-users/zsh-completions
 
-zplug "aperezdc/zsh-fzy"
+### End of Zinit's installer chunk
 
-# Vanilla shell
-zplug "yous/vanilli.sh"
-
-# Additional completion definitions for Zsh
-zplug "zsh-users/zsh-completions"
-
-# Syntax highlighting bundle. zsh-syntax-highlighting must be loaded after
-# excuting compinit command and sourcing other plugins.
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# ZSH port of Fish shell's history search feature
-zplug "zsh-users/zsh-history-substring-search", defer:3
-
-# Tracks your most used directories, based on 'frecency'.
-zplug "rupa/z", use:"*.sh"
-
-# A next-generation cd command with an interactive filter
-zplug "b4b4r07/enhancd", use:init.sh
-
-# This plugin adds many useful aliases and functions.
-zplug "plugins/git",   from:oh-my-zsh
-zplug "plugins/systemd", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/docker-compose", from:oh-my-zsh
-
-zplug "aperezdc/zsh-fzy"
-
-# Then, source plugins and add commands to $PATH
-zplug load
+# Initialize the autocompletion
+autoload -Uz compinit && compinit -i
 
 # ALT-C: cd into the selected directory
 # CTRL-T: Place the selected file path in the command line
@@ -53,26 +43,6 @@ zplug load
 bindkey '\ec' fzy-cd-widget
 bindkey '^T'  fzy-file-widget
 bindkey '^R'  fzy-history-widget
-
-zstyle :fzy:tmux    enabled      no
-
-zstyle :fzy:history show-scores  no
-zstyle :fzy:history lines        10
-zstyle :fzy:history prompt       'history >> '
-
-zstyle :fzy:file    show-scores  no
-zstyle :fzy:file    lines        10
-zstyle :fzy:file    prompt       'file >> '
-
-zstyle :fzy:cd      show-scores  no
-zstyle :fzy:cd      lines        10
-zstyle :fzy:cd      prompt       'cd >> '
-
-# Better history searching with arrow keys
-if zplug check "zsh-users/zsh-history-substring-search"; then
-    bindkey "$terminfo[kcuu1]" history-substring-search-up
-    bindkey "$terminfo[kcud1]" history-substring-search-down
-fi
 
 # Add color to ls command
 export CLICOLOR=1
@@ -92,18 +62,9 @@ if command -v yarn &> /dev/null; then
   export PATH="$PATH:$HOME/.yarn/bin/"
 fi
 
-# python
-eval "$(pyenv init -)"
-
 alias ls='lsd --color=auto'
 alias l="lsd -al"
 alias vim="nvim"
 alias vi="nvim"
 
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
-
-eval "$(pyenv init -)"
-poetry completions zsh > ~/.zfunc/_poetry
+unsetopt BEEP

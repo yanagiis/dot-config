@@ -36,7 +36,8 @@ font pango:xos4 JetBrains Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+shift+Return exec alacritty
 bindsym $mod+w exec chromium
 
 # kill focused window
@@ -101,7 +102,7 @@ bindsym $mod+a focus parent
 # focus the child container
 # bindsym $mod+d focus child
 
-bindsym $mod+n exec killall -SIGUSR1 waybar
+# bindsym $mod+n exec killall -SIGUSR1 waybar
 
 # switch to workspace
 bindsym $mod+1 workspace 1
