@@ -17,10 +17,8 @@ nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bc :bd<CR>
 
 " (C)onfig
-nnoremap <leader>cc :edit ~/.config/nvim/init.vim<CR>
+nnoremap <leader>cc :edit ~/.config/nvim/init.lua<CR>
 nnoremap <leader>ck :edit ~/.config/nvim/keybinding.vim<CR>
-nnoremap <leader>cr :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>coc :CocConfig<CR>
 
 " (F)ile
 nnoremap <leader>fs :w<CR>
@@ -86,8 +84,9 @@ augroup go
 augroup END
 
 " (P)lugin
-nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pi :PackerInstall<CR>
+nnoremap <leader>pu :PackerUpdate<CR>
+nnoremap <leader>pc :PackerClean<CR>
 
 " (W)indow
 nnoremap <leader>wh <C-w>h
