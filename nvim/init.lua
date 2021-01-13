@@ -65,22 +65,9 @@ function init_post()
   vim.cmd [[colorscheme PaperColor]]
 end
 
-function init_lightline()
-  vim.api.nvim_set_var('lightline',
-    {
-      colorscheme= 'PaperColor',
-      active= {
-        left= {{ 'mode', 'paste' },
-                  { 'readonly', 'filename' }},
-        right= {{ 'lineinfo' },
-                   { 'fileformat', 'fileencoding', 'filetype' }}
-      },
-      component_function= {
-        fileformat= 'LightlineFileformat',
-        filetype= 'LightlineFiletype',
-        filename= 'LightlineFilename',
-      }
-    })
+function init_lualine()
+  local lualine = require('lualine')
+  lualine.status()
 end
 
 function init_git()
@@ -95,13 +82,6 @@ function init_svelte()
   vim.api.nvim_set_var('vim_svelte_plugin_load_full_syntax', 1)
   vim.api.nvim_set_var('vim_svelte_plugin_use_typescript', 1)
   vim.api.nvim_set_var('vim_svelte_plugin_use_sass', 1)
-end
-
-function init_nerdtree()
-  vim.api.nvim_set_var('NERDTreeChDirMode', 2)
-  vim.api.nvim_set_var('NERDTreeIgnore', {'\\.pyc$', '__pycache__'})
-  vim.api.nvim_set_var('NERDTreeShowBookmarks', 1)
-  vim.api.nvim_set_option('wildignore', vim.api.nvim_get_option('wildignore') .. '*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite')
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -120,7 +100,8 @@ require('packer').startup(function()
   use {'tpope/vim-commentary'}
   
   -- style
-  use {'itchyny/lightline.vim'}
+  use {'kyazdani42/nvim-web-devicons'}
+  use {'hoob3rt/lualine.nvim'}
   use {'easymotion/vim-easymotion'}
   use {'NLKNguyen/papercolor-theme'}
   
@@ -148,9 +129,8 @@ require('packer').startup(function()
   use {'SirVer/ultisnips'}
   use {'honza/vim-snippets'}
 
-  -- nerdtree
-  use {'scrooloose/nerdtree'}
-  use {'Xuyuanp/nerdtree-git-plugin'}
+  -- file manager
+  use {'kyazdani42/nvim-tree.lua'}
 
   -- git
   use {'airblade/vim-gitgutter'}
@@ -190,8 +170,7 @@ require('packer').startup(function()
 end)
 
 init_lsp()
-init_lightline()
-init_nerdtree()
+init_lualine()
 init_go()
 init_git()
 init_svelte()
