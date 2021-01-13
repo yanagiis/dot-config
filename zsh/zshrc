@@ -54,7 +54,7 @@ if command -v go &> /dev/null; then
   export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 fi
 
-export PATH=$HOME/.poetry/bin:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.poetry/bin:$HOME/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 export ARDROID_HOME=$HOME/Android/Sdk/
 
 # nodejs

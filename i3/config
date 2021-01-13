@@ -5,8 +5,8 @@
 # this file and re-run i3-config-wizard(1).
 #
 #
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh dark
-exec_always feh --bg-scale $HOME/.config/i3/kristopher-roller-zepnJQycr4U-unsplash.jpg
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh dark
+exec_always feh --bg-scale $HOME/.config/i3/wallpaper.jpg
 exec_always xrdb -merge ~/.Xresources
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

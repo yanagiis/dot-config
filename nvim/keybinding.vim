@@ -102,7 +102,6 @@ nnoremap <leader>ww :ToggleWorkspace<CR>
 nnoremap <leader>* :Ack<cword><CR>
 nnoremap <leader>s :Ack
 
-
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
