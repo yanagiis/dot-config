@@ -53,7 +53,7 @@ noremap <Leader>gg :LazyGit<CR>
 
 " (L)anguage
 nmap <silent> <leader>ld zp:lua vim.lsp.buf.definition()<CR>
-nmap <silent> <leader>le :lua vim.lsp.util.show_line_diagnostics()<CR>
+nmap <silent> <leader>le :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nmap <silent> <leader>li zp:lua vim.lsp.buf.implementation()<CR>
 nmap <silent> <leader>lc zp:lua vim.lsp.buf.reference()<CR>
 nmap <silent> <leader>lr :lua vim.lsp.buf.rename()<CR>
