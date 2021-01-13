@@ -38,7 +38,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty -e tmux
 bindsym $mod+shift+Return exec alacritty
-bindsym $mod+w exec chromium
+bindsym $mod+w exec vivaldi-stable
 
 # kill focused window
 bindsym $mod+c kill
