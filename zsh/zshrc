@@ -1,5 +1,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export HISTFILE=~/.zsh_history
 
 eval "$(starship init zsh)"
 
@@ -43,6 +44,7 @@ autoload -Uz compinit && compinit -i
 bindkey '\ec' fzy-cd-widget
 bindkey '^T'  fzy-file-widget
 bindkey '^R'  fzy-history-widget
+zstyle :fzy:file command rg --files
 
 # Add color to ls command
 export CLICOLOR=1
