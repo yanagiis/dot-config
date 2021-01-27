@@ -1,11 +1,13 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export HISTFILE=~/.zsh_history
 
 eval "$(starship init zsh)"
 
 autoload -U select-word-style
 select-word-style bash
+
+# Initialize the autocompletion
+autoload -Uz compinit && compinit -i
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -27,24 +29,26 @@ zinit light-mode for \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-patch-dl \
     zinit-zsh/z-a-bin-gem-node \
+    yous/vanilli.sh \
     zsh-users/zsh-autosuggestions \
     zdharma/fast-syntax-highlighting \
-    zdharma/history-search-multi-word \
-    aperezdc/zsh-fzy \
     zsh-users/zsh-completions
 
 ### End of Zinit's installer chunk
 
-# Initialize the autocompletion
-autoload -Uz compinit && compinit -i
-
-# ALT-C: cd into the selected directory
-# CTRL-T: Place the selected file path in the command line
-# CTRL-R: Place the selected command from history in the command line
-bindkey '\ec' fzy-cd-widget
-bindkey '^T'  fzy-file-widget
-bindkey '^R'  fzy-history-widget
-zstyle :fzy:file command rg --files
+fzy-history-widget() {
+    local selected num
+    selected=( $(fc -l 1 | fzy -s -q "${LBUFFER//$/\\$}") )
+    if [ -n "$selected" ]; then
+        num=$selected[1]
+        if [ -n "$num" ]; then
+            zle vi-fetch-history -n $num
+        fi
+    fi
+    zle redisplay
+}
+zle -N fzy-history-widget
+bindkey '^R' fzy-history-widget
 
 # Add color to ls command
 export CLICOLOR=1
