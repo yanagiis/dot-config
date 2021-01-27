@@ -31,64 +31,7 @@ require('packer').startup(function()
 
   -- language server
   use {'neovim/nvim-lspconfig'}
-  use {
-    'nvim-lua/completion-nvim',
-    after = 'neovim/nvim-lspconfig',
-    config = function ()
-      local completion = require'completion'
-      local function on_attach()
-        completion.on_attach()
-      end
-
-      local sumneko_root_path = '~/projects/lua-language-server'
-      local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
-
-      local lspconfig = require('lspconfig')
-      lspconfig.bashls.setup{on_attach=on_attach}
-      lspconfig.ccls.setup{on_attach_on_attach}
-      lspconfig.dockerls.setup{on_attach=on_attach}
-      lspconfig.gopls.setup{on_attach=on_attach}
-      lspconfig.rust_analyzer.setup({on_attach=on_attach})
-      lspconfig.vimls.setup{on_attach=on_attach}
-      lspconfig.svelte.setup{on_attach=on_attach}
-      lspconfig.tsserver.setup{on_attach=on_attach}
-      lspconfig.jsonls.setup{on_attach=on_attach}
-      lspconfig.pyls.setup{on_attach=on_attach}
-      lspconfig.terraformls.setup{on_attach=on_attach}
-      lspconfig.sumneko_lua.setup {
-        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-        settings = {
-          Lua = {
-            runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = 'LuaJIT',
-              -- Setup your lua path
-              path = vim.split(package.path, ';'),
-            },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {'vim'},
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = {
-                [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-              },
-            },
-          },
-        },
-      }
-
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = false,
-          signs = true,
-          update_in_insert = false,
-        }
-      )
-    end,
-  }
+  use {'nvim-lua/completion-nvim'}
   use {'nvim-lua/lsp_extensions.nvim'}
   use {'nvim-treesitter/nvim-treesitter'}
   use {'liuchengxu/vista.vim'}
@@ -111,15 +54,33 @@ require('packer').startup(function()
     config = function()
       vim.cmd [[set background=dark]]
       vim.cmd [[colorscheme PaperColor]]
-      vim.cmd [[set background=dark]]
-      vim.cmd [[colorscheme PaperColor]]
     end,
   }
   
   -- finder
   use {'nvim-lua/popup.nvim'}
   use {'nvim-lua/plenary.nvim'}
-  use {'nvim-telescope/telescope.nvim'}
+  use {'nvim-telescope/telescope.nvim',
+    config = function()
+      require('telescope').setup{
+        defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case'
+          },
+          file_sorter = require'telescope.sorters'.get_fzy_sorter,
+          color_devicons = true,
+          use_less = true,
+          -- Developer configurations: Not meant for general override
+          buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+        }
+      }
+  end}
   
   -- debugger
   use {'sakhnik/nvim-gdb', run = "./install.sh"}
@@ -144,37 +105,35 @@ require('packer').startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     config = function()
-        local g = vim.g
-        local map = vim.api.nvim_set_keymap
-        g.lua_tree_side = 'left' -- left by default
-        g.lua_tree_width = 40 -- 30 by default
-        g.lua_tree_auto_open            = 0 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`
-        g.lua_tree_auto_close           = 1 -- 0 by default, closes the tree when it's the last window
-        g.lua_tree_quit_on_open         = 1 -- 0 by default, closes the tree when you open a file
-        g.lua_tree_follow               = 1 -- 0 by default, this option allows the cursor to be updated when entering a buffer
-        g.lua_tree_indent_markers       = 1 -- 0 by default, this option shows indent markers when folders are open
-        g.lua_tree_hide_dotfiles        = 1 -- 0 by default, this option hides files and folders starting with a dot `.`
-        g.lua_tree_git_hl               = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
-        g.lua_tree_root_folder_modifier = ':~' -- This is the default. See :help filename-modifiers for more options
-        g.lua_tree_tab_open             = 1 -- 0 by default, will open the tree when entering a new tab and the tree was previously open
-        g.lua_tree_allow_resize         = 1 -- 0 by default, will not resize the tree when opening a file
-
-        g.lua_tree_icons = {
-            default = '',
-            symlink = '',
-            git = {
-                unstaged  = "✗",
-                staged    = "✓",
-                unmerged  = "",
-                renamed   = "➜",
-                untracked = "★"
-            },
-            folder = {
-                default = "",
-                open = ""
-            }
-        }
-      end,
+      local g = vim.g
+      g.lua_tree_side = 'left' -- left by default
+      g.lua_tree_width = 30 -- 30 by default
+      g.lua_tree_auto_open            = 0 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`
+      g.lua_tree_auto_close           = 1 -- 0 by default, closes the tree when it's the last window
+      g.lua_tree_quit_on_open         = 1 -- 0 by default, closes the tree when you open a file
+      g.lua_tree_follow               = 1 -- 0 by default, this option allows the cursor to be updated when entering a buffer
+      g.lua_tree_indent_markers       = 1 -- 0 by default, this option shows indent markers when folders are open
+      g.lua_tree_hide_dotfiles        = 1 -- 0 by default, this option hides files and folders starting with a dot `.`
+      g.lua_tree_git_hl               = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
+      g.lua_tree_root_folder_modifier = ':~' -- This is the default. See :help filename-modifiers for more options
+      g.lua_tree_tab_open             = 1 -- 0 by default, will open the tree when entering a new tab and the tree was previously open
+      g.lua_tree_allow_resize         = 1 -- 0 by default, will not resize the tree when opening a file
+      g.lua_tree_icons = {
+          default = '',
+          symlink = '',
+          git = {
+              unstaged  = "✗",
+              staged    = "✓",
+              unmerged  = "",
+              renamed   = "➜",
+              untracked = "★"
+          },
+          folder = {
+              default = "",
+              open = ""
+          }
+      }
+    end,
   }
 
   -- git
@@ -207,6 +166,9 @@ require('packer').startup(function()
   use {'tpope/vim-haml'}
   use {'mattn/emmet-vim'}
 
+  -- javascript
+  use {'pangloss/vim-javascript'}
+
   -- typescript
   use {'HerringtonDarkholme/yats.vim'}
   use {'jason0x43/vim-js-indent'}
@@ -230,7 +192,65 @@ require('packer').startup(function()
   
   -- misc
   use {'tommcdo/vim-kangaroo'}
+
 end)
 
+function init_lsp()
+  local completion = require('completion')
+  local function on_attach()
+    completion.on_attach()
+  end
+  local sumneko_root_path = '~/projects/lua-language-server'
+  local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
+
+  local lspconfig = require('lspconfig')
+  lspconfig.bashls.setup{on_attach=on_attach}
+  lspconfig.ccls.setup{on_attach=on_attach}
+  lspconfig.dockerls.setup{on_attach=on_attach}
+  lspconfig.gopls.setup{on_attach=on_attach}
+  lspconfig.rust_analyzer.setup{on_attach=on_attach}
+  lspconfig.vimls.setup{on_attach=on_attach}
+  lspconfig.svelte.setup{on_attach=on_attach}
+  lspconfig.tsserver.setup{on_attach=on_attach}
+  lspconfig.jsonls.setup{on_attach=on_attach}
+  lspconfig.pyls.setup{on_attach=on_attach}
+  lspconfig.terraformls.setup{on_attach=on_attach}
+  lspconfig.sumneko_lua.setup {
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+          -- Setup your lua path
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          },
+        },
+      },
+    },
+    on_attach=on_attach,
+  }
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = true,
+      signs = true,
+      update_in_insert = false,
+    }
+  )
+end
+
+init_lsp()
 vim.cmd [[source ~/.config/nvim/basic.vim]]
 vim.cmd [[source ~/.config/nvim/keybinding.vim]]
+vim.cmd [[autocmd BufWritePost init.lua PackerCompile]]

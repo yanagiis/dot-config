@@ -147,18 +147,18 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: lualine.nvim
-loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\vstatus\flualine\frequire\0")()
--- Config for: completion-nvim
-loadstring("\27LJ\2\n#\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\0¿\14on_attachÃ\b\1\0\15\0@\0Ä\0016\0\0\0'\2\1\0B\0\2\0023\1\2\0'\2\3\0\18\3\2\0'\4\4\0&\3\4\0036\4\0\0'\6\5\0B\4\2\0029\5\6\0049\5\a\0055\a\b\0=\1\t\aB\5\2\0019\5\n\0049\5\a\0054\a\3\0006\b\v\0>\b\1\aB\5\2\0019\5\f\0049\5\a\0055\a\r\0=\1\t\aB\5\2\0019\5\14\0049\5\a\0055\a\15\0=\1\t\aB\5\2\0019\5\16\0049\5\a\0055\a\17\0=\1\t\aB\5\2\0019\5\18\0049\5\a\0055\a\19\0=\1\t\aB\5\2\0019\5\20\0049\5\a\0055\a\21\0=\1\t\aB\5\2\0019\5\22\0049\5\a\0055\a\23\0=\1\t\aB\5\2\0019\5\24\0049\5\a\0055\a\25\0=\1\t\aB\5\2\0019\5\26\0049\5\a\0055\a\27\0=\1\t\aB\5\2\0019\5\28\0049\5\a\0055\a\29\0=\1\t\aB\5\2\0019\5\30\0049\5\a\0055\a!\0005\b\31\0>\3\1\b\18\t\2\0'\n \0&\t\n\t>\t\3\b=\b\"\a5\b6\0005\t)\0005\n#\0006\v$\0009\v%\v6\r&\0009\r'\r'\14(\0B\v\3\2=\v'\n=\n*\t5\n,\0005\v+\0=\v-\n=\n.\t5\n3\0004\v\0\b6\f$\0009\f/\f9\f0\f'\0141\0B\f\2\2+\r\2\0<\r\f\v6\f$\0009\f/\f9\f0\f'\0142\0B\f\2\2+\r\2\0<\r\f\v=\v4\n=\n5\t=\t7\b=\b8\aB\5\2\0016\5$\0009\0059\0059\5:\0056\6$\0009\0069\0069\6<\0066\b$\0009\b9\b9\b=\b9\b>\b5\t?\0B\6\3\2=\6;\0052\0\0ÄK\0\1\0\1\0\3\17virtual_text\1\21update_in_insert\1\nsigns\2\27on_publish_diagnostics\15diagnostic\twith$textDocument/publishDiagnostics\rhandlers\blsp\rsettings\bLua\1\0\0\14workspace\flibrary\1\0\0\28$VIMRUNTIME/lua/vim/lsp\20$VIMRUNTIME/lua\vexpand\afn\16diagnostics\fglobals\1\0\0\1\2\0\0\bvim\fruntime\1\0\0\6;\tpath\fpackage\nsplit\bvim\1\0\1\fversion\vLuaJIT\bcmd\1\0\0\14/main.lua\1\3\0\0\0\a-E\16sumneko_lua\1\0\0\16terraformls\1\0\0\tpyls\1\0\0\vjsonls\1\0\0\rtsserver\1\0\0\vsvelte\1\0\0\nvimls\1\0\0\18rust_analyzer\1\0\0\ngopls\1\0\0\rdockerls\24on_attach_on_attach\tccls\14on_attach\1\0\0\nsetup\vbashls\14lspconfig#/bin/Linux/lua-language-server#~/projects/lua-language-server\0\15completion\frequire\0")()
--- Config for: vim-go
-loadstring("\27LJ\2\nL\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\24go_imports_autosave\17nvim_set_var\bapi\bvim\0")()
+-- Config for: nvim-tree.lua
+loadstring("\27LJ\2\nó\4\0\0\3\0\22\0!6\0\0\0009\0\1\0'\1\3\0=\1\2\0)\1\30\0=\1\4\0)\1\0\0=\1\5\0)\1\1\0=\1\6\0)\1\1\0=\1\a\0)\1\1\0=\1\b\0)\1\1\0=\1\t\0)\1\1\0=\1\n\0)\1\1\0=\1\v\0'\1\r\0=\1\f\0)\1\1\0=\1\14\0)\1\1\0=\1\15\0005\1\17\0005\2\18\0=\2\19\0015\2\20\0=\2\21\1=\1\16\0K\0\1\0\vfolder\1\0\2\fdefault\bÓóø\topen\bÓóæ\bgit\1\0\5\14untracked\b‚òÖ\frenamed\b‚ûú\runmerged\bÓúß\vstaged\b‚úì\runstaged\b‚úó\1\0\2\fdefault\bÓòí\fsymlink\bÔíÅ\19lua_tree_icons\26lua_tree_allow_resize\22lua_tree_tab_open\a:~\"lua_tree_root_folder_modifier\20lua_tree_git_hl\27lua_tree_hide_dotfiles\28lua_tree_indent_markers\20lua_tree_follow\26lua_tree_quit_on_open\24lua_tree_auto_close\23lua_tree_auto_open\19lua_tree_width\tleft\18lua_tree_side\6g\bvim\0")()
+-- Config for: papercolor-theme
+loadstring("\27LJ\2\n^\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0")()
 -- Config for: vim-gitgutter
 loadstring("\27LJ\2\nJ\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\22gitgutter_enabled\17nvim_set_var\bapi\bvim\0")()
+-- Config for: vim-go
+loadstring("\27LJ\2\nL\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\24go_imports_autosave\17nvim_set_var\bapi\bvim\0")()
+-- Config for: lualine.nvim
+loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\vstatus\flualine\frequire\0")()
 -- Config for: vim-svelte-plugin
 loadstring("\27LJ\2\n«\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\1\0B\0\3\1K\0\1\0\31vim_svelte_plugin_use_sass%vim_svelte_plugin_use_typescript'vim_svelte_plugin_load_full_syntax\17nvim_set_var\bapi\bvim\0")()
--- Config for: papercolor-theme
-loadstring("\27LJ\2\n~\0\0\3\0\4\0\0176\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\0016\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END

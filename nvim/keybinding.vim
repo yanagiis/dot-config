@@ -24,15 +24,13 @@ nnoremap <leader>ck :edit ~/.config/nvim/keybinding.vim<CR>
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
-nmap <leader>fg :lua require'telescope.builtin'.live_grep{default_text = vim.fn.expand("<cword>") }<CR>
+nmap <leader>fg :lua require'telescope.builtin'.grep_string{ search = cword }<CR>
 nmap <leader>f? :lua require'telescope.builtin'.live_grep{}<CR>
 
 " (H)ighlight
 nnoremap <leader> :hl<CR>
 
-" (S)hell and session
-nnoremap <silent> <leader>sh :terminal<CR>
-
+" (S)ession
 nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
@@ -52,12 +50,14 @@ noremap <Leader>gf :Clap gfiles<CR>
 noremap <Leader>gg :LazyGit<CR>
 
 " (L)anguage
+nmap <silent> <leader>lc zp:lua require('telescope.builtin').lsp_references{}<CR>
 nmap <silent> <leader>ld zp:lua vim.lsp.buf.definition()<CR>
 nmap <silent> <leader>le :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nmap <silent> <leader>li zp:lua vim.lsp.buf.implementation()<CR>
-nmap <silent> <leader>lc zp:lua vim.lsp.buf.reference()<CR>
 nmap <silent> <leader>lr :lua vim.lsp.buf.rename()<CR>
-nmap <silent> <leader>ll :lua vim.lsp.buf.server_ready()<CR>
+nmap <silent> <leader>ll :LspInfo<CR>
+nmap <silent> <leader>ls :lua require('telescope.builtin').lsp_document_symbols{}<CR>
+nmap <silent> <leader>lw :lua require('telescope.builtin').lsp_workspace_symbols{}<CR>
 nmap <silent> <leader>lf :lua vim.lsp.buf.formatting()<CR>
 nmap <silent> <leader>lp :lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>
 nmap <silent> <leader>ln :lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>
