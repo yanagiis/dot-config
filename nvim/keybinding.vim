@@ -68,21 +68,6 @@ nmap <C-t> zP
 " (T)ag
 nmap <silent> <leader>tt :Clap tags<CR>
 
-augroup go
-  autocmd!
-  " vim-go
-  let g:go_def_mapping_enabled = 0
-  " au FileType go nnoremap <Leader>ld <Plug>(go-def-vertical)
-  au FileType go nnoremap <Leader>lb <Plug>(go-doc-browser)
-  " au FileType go nnoremap K <Plug>(go-doc-vertical)
-  " au FileType go nnoremap <leader>lr  <Plug>(go-run)
-  au FileType go nnoremap <leader>lt  <Plug>(go-test)
-  au FileType go nnoremap <Leader>lgt <Plug>(go-coverage-toggle)
-  au FileType go nnoremap <silent> <Leader>ll <Plug>(go-metalinter)
-  au FileType go nnoremap <C-g> :GoDecls<cr>
-  au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
-augroup END
-
 " (P)lugin
 nnoremap <leader>pi :PackerInstall<CR>
 nnoremap <leader>pu :PackerUpdate<CR>
@@ -97,7 +82,6 @@ nnoremap <leader>wl <C-w>l
 " (W)orkspace
 nnoremap <leader>ww :ToggleWorkspace<CR>
 
-
 " (S)earch
 nnoremap <leader>* :Ack<cword><CR>
 nnoremap <leader>s :Ack
@@ -107,7 +91,7 @@ nnoremap <leader>. :lcd %:p:h<CR>
 
 " Function key
 nnoremap <silent> <F1> <ESC>
-nnoremap <silent> <F2> :NvimTreeToggle<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :Vista!!<CR>
 nmap <F12> <Plug>MarkdownPreviewToggle
 
@@ -115,26 +99,5 @@ augroup go
     au FileType go nnoremap <F5> :DlvDebug<CR>
     au FileType go nnoremap <F9> :DlvToggleBreakpoint<CR>
 augroup END
-
-let g:nvim_tree_bindings = {
-    \ 'edit':            ['<CR>', 'o'],
-    \ 'edit_vsplit':     'v',
-    \ 'edit_split':      's',
-    \ 'edit_tab':        't',
-    \ 'close_node':      ['<S-CR>', '<BS>'],
-    \ 'toggle_ignored':  'I',
-    \ 'toggle_dotfiles': 'H',
-    \ 'refresh':         'R',
-    \ 'preview':         '<Tab>',
-    \ 'cd':              '<C-]>',
-    \ 'create':          'a',
-    \ 'remove':          'd',
-    \ 'rename':          'r',
-    \ 'cut':             'x',
-    \ 'copy':            'c',
-    \ 'paste':           'p',
-    \ 'prev_git_item':   '[c',
-    \ 'next_git_item':   ']c',
-    \ }
 
 nnoremap ; :

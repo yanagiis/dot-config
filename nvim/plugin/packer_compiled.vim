@@ -10,6 +10,12 @@ try
 
 lua << END
 local plugins = {
+  ["nerdtree-git-plugin"] = {
+    loaded = false,
+    only_sequence = true,
+    only_setup = false,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/opt/nerdtree-git-plugin"
+  },
   ["packer.nvim"] = {
     loaded = false,
     only_sequence = false,
@@ -147,18 +153,18 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: nvim-tree.lua
-loadstring("\27LJ\2\n�\4\0\0\3\0\22\0!6\0\0\0009\0\1\0'\1\3\0=\1\2\0)\1\30\0=\1\4\0)\1\0\0=\1\5\0)\1\1\0=\1\6\0)\1\1\0=\1\a\0)\1\1\0=\1\b\0)\1\1\0=\1\t\0)\1\1\0=\1\n\0)\1\1\0=\1\v\0'\1\r\0=\1\f\0)\1\1\0=\1\14\0)\1\1\0=\1\15\0005\1\17\0005\2\18\0=\2\19\0015\2\20\0=\2\21\1=\1\16\0K\0\1\0\vfolder\1\0\2\fdefault\b\topen\b\bgit\1\0\5\14untracked\b★\frenamed\b➜\runmerged\b\vstaged\b✓\runstaged\b✗\1\0\2\fdefault\b\fsymlink\b\19lua_tree_icons\26lua_tree_allow_resize\22lua_tree_tab_open\a:~\"lua_tree_root_folder_modifier\20lua_tree_git_hl\27lua_tree_hide_dotfiles\28lua_tree_indent_markers\20lua_tree_follow\26lua_tree_quit_on_open\24lua_tree_auto_close\23lua_tree_auto_open\19lua_tree_width\tleft\18lua_tree_side\6g\bvim\0")()
--- Config for: papercolor-theme
-loadstring("\27LJ\2\n^\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0")()
+-- Config for: telescope.nvim
+loadstring("\27LJ\2\n�\2\0\0\a\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\v\0005\3\4\0005\4\3\0=\4\5\0036\4\0\0'\6\6\0B\4\2\0029\4\a\4=\4\b\0036\4\0\0'\6\t\0B\4\2\0029\4\n\4=\4\n\3=\3\f\2B\0\2\1K\0\1\0\rdefaults\1\0\0\27buffer_previewer_maker\25telescope.previewers\16file_sorter\19get_fzy_sorter\22telescope.sorters\22vimgrep_arguments\1\0\2\ruse_less\2\19color_devicons\2\1\b\0\0\arg\18--color=never\17--no-heading\20--with-filename\18--line-number\r--column\17--smart-case\nsetup\14telescope\frequire\0")()
 -- Config for: vim-gitgutter
 loadstring("\27LJ\2\nJ\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\22gitgutter_enabled\17nvim_set_var\bapi\bvim\0")()
--- Config for: vim-go
-loadstring("\27LJ\2\nL\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\24go_imports_autosave\17nvim_set_var\bapi\bvim\0")()
 -- Config for: lualine.nvim
 loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\vstatus\flualine\frequire\0")()
+-- Config for: vim-go
+loadstring("\27LJ\2\n�\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\0\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\0\0B\0\3\1K\0\1\0\21go_gopls_enabled\27go_def_mapping_enabled\24go_imports_autosave\17nvim_set_var\bapi\bvim\0")()
 -- Config for: vim-svelte-plugin
 loadstring("\27LJ\2\n�\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\1\0B\0\3\1K\0\1\0\31vim_svelte_plugin_use_sass%vim_svelte_plugin_use_typescript'vim_svelte_plugin_load_full_syntax\17nvim_set_var\bapi\bvim\0")()
+-- Config for: papercolor-theme
+loadstring("\27LJ\2\n^\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0")()
 -- Conditional loads
 -- Load plugins in order defined by `after`
 END
