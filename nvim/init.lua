@@ -175,8 +175,6 @@ function init_lsp()
   local function on_attach()
     completion.on_attach()
   end
-  local sumneko_root_path = '~/projects/lua-language-server'
-  local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
 
   local lspconfig = require('lspconfig')
   lspconfig.bashls.setup{on_attach=on_attach}
@@ -201,31 +199,7 @@ function init_lsp()
   lspconfig.jsonls.setup{on_attach=on_attach}
   lspconfig.pyls.setup{on_attach=on_attach}
   lspconfig.terraformls.setup{on_attach=on_attach}
-  lspconfig.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-    settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = 'LuaJIT',
-          -- Setup your lua path
-          path = vim.split(package.path, ';'),
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = {'vim'},
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-          },
-        },
-      },
-    },
-    on_attach=on_attach,
-  }
+  lspconfig.sumneko_lua.setup {on_attach=on_attach}
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
