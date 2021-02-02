@@ -1,4 +1,5 @@
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+vim.cmd [[packadd termdebug]]
 
 if not packer_exists then
     -- TODO: Maybe handle windows better?
@@ -84,6 +85,14 @@ require('packer').startup(function()
         }
       }
   end}
+
+  -- project localrc
+  use {
+    'embear/vim-localvimrc',
+    config = function()
+      vim.api.nvim_set_var('localvimrc_name', 'init.vim')
+    end
+  }
   
   -- debugger
   use {'sakhnik/nvim-gdb', run = "./install.sh"}
@@ -105,7 +114,6 @@ require('packer').startup(function()
   use {'honza/vim-snippets'}
 
   -- file manager
-  use {'ms-jpq/chadtree', run = 'python3 -m chadtree deps'}
   use {'preservim/nerdtree'}
   use {'Xuyuanp/nerdtree-git-plugin', after={'nerdtree'}}
 
@@ -167,6 +175,7 @@ require('packer').startup(function()
   
   -- misc
   use {'tommcdo/vim-kangaroo'}
+  use {'vim-scripts/gtags.vim'}
 
 end)
 

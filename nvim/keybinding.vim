@@ -66,7 +66,7 @@ nmap <silent> K :lua vim.lsp.buf.hover()<CR>
 nmap <C-t> zP
 
 " (T)ag
-nmap <silent> <leader>tt :Clap tags<CR>
+nmap <silent> <leader>tt :lua require('telescope.builtin').tags{}<CR>
 
 " (P)lugin
 nnoremap <leader>pi :PackerInstall<CR>
