@@ -91,6 +91,7 @@ require('packer').startup(function()
     'embear/vim-localvimrc',
     config = function()
       vim.api.nvim_set_var('localvimrc_name', 'init.vim')
+      vim.api.nvim_set_var('localvimrc_sandbox', 0)
     end
   }
   
