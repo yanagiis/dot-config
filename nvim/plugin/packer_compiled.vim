@@ -6,186 +6,235 @@ if !has('nvim-0.5')
   echohl None
   finish
 endif
+
+packadd packer.nvim
+
 try
 
 lua << END
-local plugins = {
+local package_path_str = "/home/yanagiis/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/yanagiis/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/yanagiis/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/yanagiis/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/yanagiis/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+if not string.find(package.path, package_path_str, 1, true) then
+  package.path = package.path .. ';' .. package_path_str
+end
+
+if not string.find(package.cpath, install_cpath_pattern, 1, true) then
+  package.cpath = package.cpath .. ';' .. install_cpath_pattern
+end
+
+local function try_loadstring(s, component, name)
+  local success, err = pcall(loadstring(s))
+  if not success then
+    print('Error running ' .. component .. ' for ' .. name)
+    error(err)
+  end
+end
+
+_G.packer_plugins = {
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/emmet-vim"
+  },
+  gitv = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/gitv"
+  },
+  ["gtags.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/gtags.vim"
+  },
+  ["lazygit.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/lazygit.vim"
+  },
+  ["lsp_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  ["lualine.nvim"] = {
+    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\vstatus\flualine\frequire\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
+  ["meson.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/meson.vim"
+  },
+  nerdtree = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/nerdtree"
+  },
   ["nerdtree-git-plugin"] = {
     loaded = false,
-    only_sequence = true,
-    only_setup = false,
     path = "/home/yanagiis/.local/share/nvim/site/pack/packer/opt/nerdtree-git-plugin"
+  },
+  ["nvim-gdb"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/nvim-gdb"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = false,
-    only_sequence = false,
-    only_setup = false,
     path = "/home/yanagiis/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+  },
+  ["papercolor-theme"] = {
+    config = { "\27LJ\2\n^\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/papercolor-theme"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["requirements.txt.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/requirements.txt.vim"
+  },
+  ["rust.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/rust.vim"
+  },
+  ["telescope.nvim"] = {
+    config = { "\27LJ\2\n›\2\0\0\a\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\v\0005\3\4\0005\4\3\0=\4\5\0036\4\0\0'\6\6\0B\4\2\0029\4\a\4=\4\b\0036\4\0\0'\6\t\0B\4\2\0029\4\n\4=\4\n\3=\3\f\2B\0\2\1K\0\1\0\rdefaults\1\0\0\27buffer_previewer_maker\25telescope.previewers\16file_sorter\19get_fzy_sorter\22telescope.sorters\22vimgrep_arguments\1\0\2\ruse_less\2\19color_devicons\2\1\b\0\0\arg\18--color=never\17--no-heading\20--with-filename\18--line-number\r--column\17--smart-case\nsetup\14telescope\frequire\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ultisnips = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/ultisnips"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-css-color"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-css-color"
+  },
+  ["vim-css3-syntax"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-css3-syntax"
+  },
+  ["vim-easy-align"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-easy-align"
+  },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-easymotion"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-gitgutter"] = {
+    config = { "\27LJ\2\nJ\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\22gitgutter_enabled\17nvim_set_var\bapi\bvim\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+  },
+  ["vim-go"] = {
+    config = { "\27LJ\2\n§\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\0\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\0\0B\0\3\1K\0\1\0\21go_gopls_enabled\27go_def_mapping_enabled\24go_imports_autosave\17nvim_set_var\bapi\bvim\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-go"
+  },
+  ["vim-haml"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-haml"
+  },
+  ["vim-javascript"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-javascript"
+  },
+  ["vim-js-indent"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-js-indent"
+  },
+  ["vim-kangaroo"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-kangaroo"
+  },
+  ["vim-localvimrc"] = {
+    config = { "\27LJ\2\n|\0\0\4\0\6\0\r6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\0\0B\0\3\1K\0\1\0\23localvimrc_sandbox\rinit.vim\20localvimrc_name\17nvim_set_var\bapi\bvim\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-localvimrc"
+  },
+  ["vim-polyglot"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-polyglot"
+  },
+  ["vim-pydocstring"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-pydocstring"
+  },
+  ["vim-snippets"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-snippets"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  ["vim-svelte-plugin"] = {
+    config = { "\27LJ\2\n«\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\1\0B\0\3\1K\0\1\0\31vim_svelte_plugin_use_sass%vim_svelte_plugin_use_typescript'vim_svelte_plugin_load_full_syntax\17nvim_set_var\bapi\bvim\0" },
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin"
+  },
+  ["vim-twiggy"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vim-twiggy"
+  },
+  ["vista.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/vista.vim"
+  },
+  ["yats.vim"] = {
+    loaded = true,
+    path = "/home/yanagiis/.local/share/nvim/site/pack/packer/start/yats.vim"
   }
 }
 
-local function handle_bufread(names)
-  for _, name in ipairs(names) do
-    local path = plugins[name].path
-    for _, dir in ipairs({ 'ftdetect', 'ftplugin', 'after/ftdetect', 'after/ftplugin' }) do
-      if #vim.fn.finddir(dir, path) > 0 then
-        vim.cmd('doautocmd BufRead')
-        return
-      end
-    end
-  end
-end
-
-local packer_load = nil
-local function handle_after(name, before)
-  local plugin = plugins[name]
-  plugin.load_after[before] = nil
-  if next(plugin.load_after) == nil then
-    packer_load({name}, {})
-  end
-end
-
-packer_load = function(names, cause)
-  local some_unloaded = false
-  for _, name in ipairs(names) do
-    if not plugins[name].loaded then
-      some_unloaded = true
-      break
-    end
-  end
-
-  if not some_unloaded then return end
-
-  local fmt = string.format
-  local del_cmds = {}
-  local del_maps = {}
-  for _, name in ipairs(names) do
-    if plugins[name].commands then
-      for _, cmd in ipairs(plugins[name].commands) do
-        del_cmds[cmd] = true
-      end
-    end
-
-    if plugins[name].keys then
-      for _, key in ipairs(plugins[name].keys) do
-        del_maps[key] = true
-      end
-    end
-  end
-
-  for cmd, _ in pairs(del_cmds) do
-    vim.cmd('silent! delcommand ' .. cmd)
-  end
-
-  for key, _ in pairs(del_maps) do
-    vim.cmd(fmt('silent! %sunmap %s', key[1], key[2]))
-  end
-
-  for _, name in ipairs(names) do
-    if not plugins[name].loaded then
-      vim.cmd('packadd ' .. name)
-      if plugins[name].config then
-        for _i, config_line in ipairs(plugins[name].config) do
-          loadstring(config_line)()
-        end
-      end
-
-      if plugins[name].after then
-        for _, after_name in ipairs(plugins[name].after) do
-          handle_after(after_name, name)
-          vim.cmd('redraw')
-        end
-      end
-
-      plugins[name].loaded = true
-    end
-  end
-
-  handle_bufread(names)
-
-  if cause.cmd then
-    local lines = cause.l1 == cause.l2 and '' or (cause.l1 .. ',' .. cause.l2)
-    vim.cmd(fmt('%s%s%s %s', lines, cause.cmd, cause.bang, cause.args))
-  elseif cause.keys then
-    local keys = cause.keys
-    local extra = ''
-    while true do
-      local c = vim.fn.getchar(0)
-      if c == 0 then break end
-      extra = extra .. vim.fn.nr2char(c)
-    end
-
-    if cause.prefix then
-      local prefix = vim.v.count ~= 0 and vim.v.count or ''
-      prefix = prefix .. '"' .. vim.v.register .. cause.prefix
-      if vim.fn.mode('full') == 'no' then
-        if vim.v.operator == 'c' then
-          prefix = '' .. prefix
-        end
-
-        prefix = prefix .. vim.v.operator
-      end
-
-      vim.fn.feedkeys(prefix, 'n')
-    end
-
-    local escaped_keys = vim.api.nvim_replace_termcodes(cause.keys .. extra, true, true, true)
-    vim.api.nvim_feedkeys(escaped_keys, 'm', true)
-  elseif cause.event then
-    vim.cmd(fmt('doautocmd <nomodeline> %s', cause.event))
-  elseif cause.ft then
-    vim.cmd(fmt('doautocmd <nomodeline> %s FileType %s', 'filetypeplugin', cause.ft))
-    vim.cmd(fmt('doautocmd <nomodeline> %s FileType %s', 'filetypeindent', cause.ft))
-  end
-end
-
-_packer_load_wrapper = function(names, cause)
-  success, err_msg = pcall(packer_load, names, cause)
-  if not success then
-    vim.cmd('echohl ErrorMsg')
-    vim.cmd('echomsg "Error in packer_compiled: ' .. vim.fn.escape(err_msg, '"') .. '"')
-    vim.cmd('echomsg "Please check your config for correctness"')
-    vim.cmd('echohl None')
-  end
-end
-
--- Runtimepath customization
-
--- Pre-load configuration
--- Post-load configuration
--- Config for: vim-svelte-plugin
-loadstring("\27LJ\2\n«\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\1\0B\0\3\1K\0\1\0\31vim_svelte_plugin_use_sass%vim_svelte_plugin_use_typescript'vim_svelte_plugin_load_full_syntax\17nvim_set_var\bapi\bvim\0")()
--- Config for: telescope.nvim
-loadstring("\27LJ\2\n›\2\0\0\a\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\v\0005\3\4\0005\4\3\0=\4\5\0036\4\0\0'\6\6\0B\4\2\0029\4\a\4=\4\b\0036\4\0\0'\6\t\0B\4\2\0029\4\n\4=\4\n\3=\3\f\2B\0\2\1K\0\1\0\rdefaults\1\0\0\27buffer_previewer_maker\25telescope.previewers\16file_sorter\19get_fzy_sorter\22telescope.sorters\22vimgrep_arguments\1\0\2\ruse_less\2\19color_devicons\2\1\b\0\0\arg\18--color=never\17--no-heading\20--with-filename\18--line-number\r--column\17--smart-case\nsetup\14telescope\frequire\0")()
 -- Config for: vim-go
-loadstring("\27LJ\2\n§\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\0\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\0\0B\0\3\1K\0\1\0\21go_gopls_enabled\27go_def_mapping_enabled\24go_imports_autosave\17nvim_set_var\bapi\bvim\0")()
--- Config for: vim-gitgutter
-loadstring("\27LJ\2\nJ\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\22gitgutter_enabled\17nvim_set_var\bapi\bvim\0")()
--- Config for: papercolor-theme
-loadstring("\27LJ\2\n^\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0")()
--- Config for: vim-localvimrc
-loadstring("\27LJ\2\nQ\0\0\4\0\5\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0B\0\3\1K\0\1\0\rinit.vim\20localvimrc_name\17nvim_set_var\bapi\bvim\0")()
+try_loadstring("\27LJ\2\n§\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\0\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\0\0B\0\3\1K\0\1\0\21go_gopls_enabled\27go_def_mapping_enabled\24go_imports_autosave\17nvim_set_var\bapi\bvim\0", "config", "vim-go")
+-- Config for: telescope.nvim
+try_loadstring("\27LJ\2\n›\2\0\0\a\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\v\0005\3\4\0005\4\3\0=\4\5\0036\4\0\0'\6\6\0B\4\2\0029\4\a\4=\4\b\0036\4\0\0'\6\t\0B\4\2\0029\4\n\4=\4\n\3=\3\f\2B\0\2\1K\0\1\0\rdefaults\1\0\0\27buffer_previewer_maker\25telescope.previewers\16file_sorter\19get_fzy_sorter\22telescope.sorters\22vimgrep_arguments\1\0\2\ruse_less\2\19color_devicons\2\1\b\0\0\arg\18--color=never\17--no-heading\20--with-filename\18--line-number\r--column\17--smart-case\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
 -- Config for: lualine.nvim
-loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\vstatus\flualine\frequire\0")()
--- Conditional loads
--- Load plugins in order defined by `after`
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\1\2\0B\1\1\1K\0\1\0\vstatus\flualine\frequire\0", "config", "lualine.nvim")
+-- Config for: vim-localvimrc
+try_loadstring("\27LJ\2\n|\0\0\4\0\6\0\r6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\0\0B\0\3\1K\0\1\0\23localvimrc_sandbox\rinit.vim\20localvimrc_name\17nvim_set_var\bapi\bvim\0", "config", "vim-localvimrc")
+-- Config for: vim-svelte-plugin
+try_loadstring("\27LJ\2\n«\1\0\0\4\0\6\0\0196\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\4\0)\3\1\0B\0\3\0016\0\0\0009\0\1\0009\0\2\0'\2\5\0)\3\1\0B\0\3\1K\0\1\0\31vim_svelte_plugin_use_sass%vim_svelte_plugin_use_typescript'vim_svelte_plugin_load_full_syntax\17nvim_set_var\bapi\bvim\0", "config", "vim-svelte-plugin")
+-- Config for: vim-gitgutter
+try_loadstring("\27LJ\2\nJ\0\0\4\0\4\0\a6\0\0\0009\0\1\0009\0\2\0'\2\3\0)\3\1\0B\0\3\1K\0\1\0\22gitgutter_enabled\17nvim_set_var\bapi\bvim\0", "config", "vim-gitgutter")
+-- Config for: papercolor-theme
+try_loadstring("\27LJ\2\n^\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0\27colorscheme PaperColor\24set background=dark\bcmd\bvim\0", "config", "papercolor-theme")
 END
-
-function! s:load(names, cause) abort
-  call luaeval('_packer_load_wrapper(_A[1], _A[2])', [a:names, a:cause])
-endfunction
-
-
-" Command lazy-loads
-
-" Keymap lazy-loads
-
-augroup packer_load_aucmds
-  au!
-  " Filetype lazy-loads
-  " Event lazy-loads
-  " Function lazy-loads
-augroup END
 
 catch
   echohl ErrorMsg
