@@ -32,6 +32,7 @@ require('packer').startup(function()
   -- language server
   use {'neovim/nvim-lspconfig'}
   use {'nvim-lua/completion-nvim'}
+  use {'glepnir/lspsaga.nvim'}
   use {'nvim-lua/lsp_extensions.nvim'}
   use {'nvim-treesitter/nvim-treesitter'}
   use {'liuchengxu/vista.vim'}
@@ -181,6 +182,9 @@ function init_lsp()
   local function on_attach()
     completion.on_attach()
   end
+
+  local saga = require 'lspsaga'
+  saga.init_lsp_saga()
 
   local lspconfig = require('lspconfig')
   lspconfig.bashls.setup{on_attach=on_attach}
