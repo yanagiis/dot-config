@@ -1,5 +1,4 @@
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-vim.cmd [[packadd termdebug]]
 
 if not packer_exists then
     -- TODO: Maybe handle windows better?
@@ -95,11 +94,8 @@ require('packer').startup(function()
     end
   }
   
-  -- debugger
-  use {'sakhnik/nvim-gdb', run = "./install.sh"}
-  
   -- marks
-  use {'kshenoy/vim-signature'}
+  use {'sakhnik/nvim-gdb', run='./install.sh'}
   
   -- align
   use {'junegunn/vim-easy-align'}
