@@ -184,18 +184,21 @@ function init_lsp()
 
   local lspconfig = require('lspconfig')
   lspconfig.bashls.setup{on_attach=on_attach}
-  lspconfig.ccls.setup{
+  lspconfig.clangd.setup{
     on_attach=on_attach,
-    init_options = {
-	  compilationDatabaseDirectory = "build";
-      index = {
-        threads = 0;
-      };
-      clang = {
-        excludeArgs = { "-frounding-math"} ;
-      };
-    },
   }
+  -- lspconfig.ccls.setup{
+  --   on_attach=on_attach,
+  --   init_options = {
+	  -- compilationDatabaseDirectory = "build";
+  --     index = {
+  --       threads = 0;
+  --     };
+  --     clang = {
+  --       excludeArgs = { "-frounding-math"} ;
+  --     };
+  --   },
+  -- }
   lspconfig.dockerls.setup{on_attach=on_attach}
   lspconfig.gopls.setup{on_attach=on_attach}
   lspconfig.rust_analyzer.setup{on_attach=on_attach}
