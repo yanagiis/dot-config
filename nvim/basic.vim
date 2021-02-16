@@ -102,8 +102,7 @@ set noshowmode
 " don't give |ins-completion-menu| messages.
 set shortmess+=cI
 
-" IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+set completeopt=menuone,noselect
 
 " always show signcolumns
 " set signcolumn=yes

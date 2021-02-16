@@ -31,8 +31,9 @@ require('packer').startup(function()
 
   -- language server
   use {'neovim/nvim-lspconfig'}
-  use {'nvim-lua/completion-nvim'}
+  -- use {'nvim-lua/completion-nvim'}
   use {'glepnir/lspsaga.nvim'}
+  use {'hrsh7th/nvim-compe'}
   use {'nvim-lua/lsp_extensions.nvim'}
   use {'nvim-treesitter/nvim-treesitter'}
   use {'liuchengxu/vista.vim'}
@@ -45,7 +46,7 @@ require('packer').startup(function()
   -- use {'easymotion/vim-easymotion'}
   use {
     'phaazon/hop.nvim',
-    after = {'papercolor-theme'},
+    after = {'vim-code-dark'},
     config = function()
       vim.cmd [[highlight HopNextKey  cterm=bold ctermfg=196 guifg=#ff007c gui=bold blend=0]]
       vim.cmd [[highlight HopNextKey1 cterm=bold ctermfg=202 guifg=#00dfff gui=bold blend=0]]
@@ -63,10 +64,10 @@ require('packer').startup(function()
     end,
   }
   use {
-    'NLKNguyen/papercolor-theme',
+    'tomasiser/vim-code-dark',
     config = function()
       vim.cmd [[set background=dark]]
-      vim.cmd [[colorscheme PaperColor]]
+      vim.cmd [[colorscheme codedark]]
     end,
   }
   
@@ -75,6 +76,7 @@ require('packer').startup(function()
   use {'nvim-lua/plenary.nvim'}
   use {'nvim-telescope/telescope.nvim',
     config = function()
+      local actions = require('telescope.actions')
       require('telescope').setup{
         defaults = {
           vimgrep_arguments = {
@@ -90,7 +92,17 @@ require('packer').startup(function()
           color_devicons = true,
           use_less = true,
           -- Developer configurations: Not meant for general override
-          buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+          buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+          mappings = {
+            i = {
+              ["<C-w>"] = actions.send_selected_to_qflist,
+              ["<C-q>"] = actions.send_to_qflist,
+            },
+            n = {
+              ["<C-w>"] = actions.send_selected_to_qflist,
+              ["<C-q>"] = actions.send_to_qflist,
+            },
+          },
         }
       }
   end}
@@ -112,13 +124,24 @@ require('packer').startup(function()
   
   -- surround
   use {'tpope/vim-surround'}
+
+  -- indent
+  use {
+    'Yggdroot/indentLine', 
+    config = function()
+      vim.api.nvim_set_var('indentLine_color_term', 239)
+      vim.api.nvim_set_var('indentLine_char', '|')
+      vim.api.nvim_set_var('indentLine_enabled', 1)
+    end
+
+  }
   
   -- syntax
   use {'sheerun/vim-polyglot'}
   
   -- snippet 
   use {'SirVer/ultisnips'}
-  use {'honza/vim-snippets'}
+  use {'norcalli/snippets.nvim'}
 
   -- file manager
   use {'preservim/nerdtree'}
@@ -187,41 +210,91 @@ require('packer').startup(function()
 end)
 
 function init_lsp()
-  local completion = require('completion')
-  local function on_attach()
-    completion.on_attach()
-  end
+  require'compe'.setup {
+    enabled = true;
+    autocomplete = true;
+    debug = true;
+    min_length = 1;
+    preselect = 'enable';
+    throttle_time = 80;
+    source_timeout = 200;
+    incomplete_delay = 400;
+    max_abbr_width = 100;
+    max_kind_width = 100;
+    max_menu_width = 100;
+    documentation = true;
+
+    source = {
+      path = true;
+      buffer = true;
+      calc = false;
+      vsnip = false;
+      nvim_lsp = true;
+      nvim_lua = true;
+      spell = false;
+      tags = true;
+      snippets_nvim = false;
+      treesitter = false;
+    };
+  }
 
   local saga = require 'lspsaga'
   saga.init_lsp_saga()
 
   local lspconfig = require('lspconfig')
-  lspconfig.bashls.setup{on_attach=on_attach}
-  lspconfig.clangd.setup{
-    on_attach=on_attach,
+
+  local system_name
+  if vim.fn.has("mac") == 1 then
+    system_name = "macOS"
+  elseif vim.fn.has("unix") == 1 then
+    system_name = "Linux"
+  elseif vim.fn.has('win32') == 1 then
+    system_name = "Windows"
+  else
+    print("Unsupported system for sumneko")
+  end
+
+  -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+  local sumneko_root_path = '/home/yanagiis/.local/share/nvim/lspinstall/lua-language-server'
+  local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+
+  lspconfig.sumneko_lua.setup {
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = 'LuaJIT',
+          -- Setup your lua path
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = {'vim'},
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          },
+        },
+      },
+    },
   }
-  -- lspconfig.ccls.setup{
-  --   on_attach=on_attach,
-  --   init_options = {
-	  -- compilationDatabaseDirectory = "build";
-  --     index = {
-  --       threads = 0;
-  --     };
-  --     clang = {
-  --       excludeArgs = { "-frounding-math"} ;
-  --     };
-  --   },
-  -- }
-  lspconfig.dockerls.setup{on_attach=on_attach}
-  lspconfig.gopls.setup{on_attach=on_attach}
-  lspconfig.rust_analyzer.setup{on_attach=on_attach}
-  lspconfig.vimls.setup{on_attach=on_attach}
-  lspconfig.svelte.setup{on_attach=on_attach}
-  lspconfig.tsserver.setup{on_attach=on_attach}
-  lspconfig.jsonls.setup{on_attach=on_attach}
-  lspconfig.pyls.setup{on_attach=on_attach}
-  lspconfig.terraformls.setup{on_attach=on_attach}
-  lspconfig.sumneko_lua.setup {on_attach=on_attach}
+
+  lspconfig.bashls.setup{}
+  lspconfig.clangd.setup{}
+  lspconfig.dockerls.setup{}
+  lspconfig.gopls.setup{}
+  lspconfig.rust_analyzer.setup{}
+  lspconfig.vimls.setup{}
+  lspconfig.svelte.setup{}
+  lspconfig.tsserver.setup{}
+  lspconfig.jsonls.setup{}
+  lspconfig.pyls.setup{}
+  lspconfig.terraformls.setup{}
+  lspconfig.cmake.setup{}
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {

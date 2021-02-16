@@ -24,6 +24,7 @@ nnoremap <leader>ck :edit ~/.config/nvim/keybinding.vim<CR>
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fS :w !sudo tee %<CR>
 nnoremap <leader>ff :lua require'telescope.builtin'.find_files{}<CR>
+nnoremap <leader>fq :lua require'telescope.builtin'.quickfix{}<CR>
 nmap <leader>fg :lua require'telescope.builtin'.grep_string{ search = cword }<CR>
 nmap <leader>f? :lua require'telescope.builtin'.live_grep{}<CR>
 
@@ -46,7 +47,6 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 noremap <Leader>gv :Gitv<CR>
-noremap <Leader>gf :Clap gfiles<CR>
 noremap <Leader>gg :LazyGit<CR>
 
 " (L)anguage
