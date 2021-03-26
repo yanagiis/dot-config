@@ -43,16 +43,16 @@ require('packer').startup(function()
   use {'tpope/vim-commentary'}
 
   -- move
-  -- use {'easymotion/vim-easymotion'}
-  use {
-    'phaazon/hop.nvim',
-    after = {'vim-code-dark'},
-    config = function()
-      vim.cmd [[highlight HopNextKey  cterm=bold ctermfg=196 guifg=#ff007c gui=bold blend=0]]
-      vim.cmd [[highlight HopNextKey1 cterm=bold ctermfg=202 guifg=#00dfff gui=bold blend=0]]
-      vim.cmd [[highlight HopNextKey2 cterm=bold ctermfg=208 guifg=#2b8db3          blend=0]]
-    end
-  }
+  use {'easymotion/vim-easymotion'}
+  -- use {
+  --   'phaazon/hop.nvim',
+  --   after = {'vim-code-dark'},
+  --   config = function()
+  --     vim.cmd [[highlight HopNextKey  cterm=bold ctermfg=196 guifg=#ff007c gui=bold blend=0]]
+  --     vim.cmd [[highlight HopNextKey1 cterm=bold ctermfg=202 guifg=#00dfff gui=bold blend=0]]
+  --     vim.cmd [[highlight HopNextKey2 cterm=bold ctermfg=208 guifg=#2b8db3          blend=0]]
+  --   end
+  -- }
   
   -- style
   use {'kyazdani42/nvim-web-devicons'}
@@ -60,7 +60,7 @@ require('packer').startup(function()
     'hoob3rt/lualine.nvim',
     config = function()
       local lualine = require('lualine')
-      lualine.status()
+      lualine.setup()
     end,
   }
   use {

@@ -87,10 +87,10 @@ nnoremap <leader>* :Ack<cword><CR>
 nnoremap <leader>s :Ack
 
 " Jump
-nnoremap <leader><space>w :HopWord<CR>
-nnoremap <leader><space>b :HopWord<CR>
-nnoremap <leader><space>/ :HopPattern<CR>
-nnoremap <leader><space>f :HopChar1<CR>
+" nnoremap <leader><space>w :HopWord<CR>
+" nnoremap <leader><space>b :HopWord<CR>
+" nnoremap <leader><space>/ :HopPattern<CR>
+" nnoremap <leader><space>f :HopChar1<CR>
 
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
