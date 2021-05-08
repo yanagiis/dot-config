@@ -25,44 +25,35 @@ if not packer_exists then
     return
 end
 
-require('packer').startup(function()
+local packer = require('packer')
+
+packer.startup(function()
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
 
   -- language server
   use {'neovim/nvim-lspconfig'}
-  -- use {'nvim-lua/completion-nvim'}
   use {'glepnir/lspsaga.nvim'}
   use {'hrsh7th/nvim-compe'}
   use {'nvim-lua/lsp_extensions.nvim'}
-  use {'nvim-treesitter/nvim-treesitter'}
   use {'liuchengxu/vista.vim'}
-  use {'anott03/nvim-lspinstall'}
   
   -- comment
   use {'tpope/vim-commentary'}
 
   -- move
-  use {'easymotion/vim-easymotion'}
-  -- use {
-  --   'phaazon/hop.nvim',
-  --   after = {'vim-code-dark'},
-  --   config = function()
-  --     vim.cmd [[highlight HopNextKey  cterm=bold ctermfg=196 guifg=#ff007c gui=bold blend=0]]
-  --     vim.cmd [[highlight HopNextKey1 cterm=bold ctermfg=202 guifg=#00dfff gui=bold blend=0]]
-  --     vim.cmd [[highlight HopNextKey2 cterm=bold ctermfg=208 guifg=#2b8db3          blend=0]]
-  --   end
-  -- }
+  use {
+    'phaazon/hop.nvim',
+    config = function()
+      vim.cmd [[highlight HopNextKey  cterm=bold ctermfg=196 guifg=#ff007c gui=bold blend=0]]
+      vim.cmd [[highlight HopNextKey1 cterm=bold ctermfg=202 guifg=#00dfff gui=bold blend=0]]
+      vim.cmd [[highlight HopNextKey2 cterm=bold ctermfg=208 guifg=#2b8db3          blend=0]]
+    end
+  }
   
   -- style
   use {'kyazdani42/nvim-web-devicons'}
-  use {
-    'hoob3rt/lualine.nvim',
-    config = function()
-      local lualine = require('lualine')
-      lualine.setup()
-    end,
-  }
+  use { 'hoob3rt/lualine.nvim' }
   use {
     'tomasiser/vim-code-dark',
     config = function()
@@ -145,7 +136,7 @@ require('packer').startup(function()
 
   -- file manager
   use {'preservim/nerdtree'}
-  use {'Xuyuanp/nerdtree-git-plugin', after={'nerdtree'}}
+  use {'Xuyuanp/nerdtree-git-plugin'}
 
   -- git
   use {
@@ -206,6 +197,7 @@ require('packer').startup(function()
   -- misc
   use {'tommcdo/vim-kangaroo'}
   use {'vim-scripts/gtags.vim'}
+  use {'vim-scripts/DoxygenToolkit.vim'}
 
 end)
 
@@ -308,4 +300,3 @@ end
 init_lsp()
 vim.cmd [[source ~/.config/nvim/basic.vim]]
 vim.cmd [[source ~/.config/nvim/keybinding.vim]]
-vim.cmd [[autocmd BufWritePost init.lua PackerCompile]]
